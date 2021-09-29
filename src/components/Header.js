@@ -1,6 +1,7 @@
 import { IconButton } from '@chakra-ui/button'
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Box, Flex, HStack, Link, Text } from '@chakra-ui/layout'
+import { Box, Flex, HStack, Link, VStack } from '@chakra-ui/layout'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import LogoDark from '../assets/brand/logo-dark.png'
 import CloseIcon from '../assets/icons/ui/CloseIcon'
@@ -9,9 +10,45 @@ import HamburgerMenuIcon from '../assets/icons/ui/HamburgerMenuIcon'
 import CustomImage from './utils/CustomImage'
 import CustomLink from './utils/CustomLink'
 
+const FramerContainer = {
+  hidden: {
+    opacity: 0.9,
+  },
+  visible: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+}
+
+const FramerMenu = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.125,
+      staggerChildren: 0.125,
+    },
+  },
+}
+
+const FramerItem = {
+  hidden: { y: -20, opacity: 0 },
+  visible: { y: 0, opacity: 1 },
+  exit: {
+    opacity: 0,
+  },
+}
+
 const Header = () => {
   const { isOpen, onToggle } = useDisclosure()
   const navLinks = ['Our Company', 'Locations', 'Contact']
+  const MotionBox = motion(Box)
+  const MotionVStack = motion(VStack)
+  const MotionLink = motion(Link)
   return (
     <Box maxW="1110px" w="full">
       <Flex
@@ -55,28 +92,46 @@ const Header = () => {
           />
         </Box>
       </Flex>
-
-      {isOpen ? (
-        <Box
-          w="full"
-          bg="rgba(0,0,0,0.5)"
-          h="100vh"
-          zIndex="overlay"
-          display={{ md: 'none' }}
-        >
-          <Box bg="primary.black" px="6" py="12">
-            <Text
-              color="white"
-              fontSize="24px"
-              textTransform="uppercase"
-              letterSpacing="2px"
-              lineHeight="25px"
+      <AnimatePresence>
+        {isOpen && (
+          <MotionBox
+            w="full"
+            bg="rgba(0,0,0,0.5)"
+            h="100vh"
+            zIndex="overlay"
+            display={{ md: 'none' }}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={FramerContainer}
+          >
+            <MotionVStack
+              bg="primary.black"
+              px="6"
+              py="12"
+              spacing="8"
+              align="flex-start"
+              variants={FramerMenu}
             >
-              NAV
-            </Text>
-          </Box>
-        </Box>
-      ) : null}
+              {navLinks.map((link, i) => (
+                <MotionLink
+                  key={i}
+                  href="/"
+                  color="white"
+                  fontSize="24px"
+                  textTransform="uppercase"
+                  letterSpacing="2px"
+                  lineHeight="25px"
+                  _hover={{ textDecoration: 'underline' }}
+                  variants={FramerItem}
+                >
+                  {link}
+                </MotionLink>
+              ))}
+            </MotionVStack>
+          </MotionBox>
+        )}
+      </AnimatePresence>
     </Box>
   )
 }
