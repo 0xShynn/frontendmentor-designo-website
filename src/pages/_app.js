@@ -5,6 +5,7 @@ import SEO from '../../next-seo.config'
 import overrides from '../theme/index'
 import '@fontsource/jost/400.css'
 import '@fontsource/jost/600.css'
+import '@fontsource/jost/700.css'
 
 function MyApp({ Component, pageProps }) {
   return (

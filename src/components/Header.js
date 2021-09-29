@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import LogoDark from '../assets/brand/logo-dark.png'
 import CloseIcon from '../assets/icons/ui/CloseIcon'
 import HamburgerMenuIcon from '../assets/icons/ui/HamburgerMenuIcon'
+import navLinks from '../utils/navLinks'
 
 import CustomImage from './utils/CustomImage'
 import CustomLink from './utils/CustomLink'
@@ -45,7 +46,6 @@ const FramerItem = {
 
 const Header = () => {
   const { isOpen, onToggle } = useDisclosure()
-  const navLinks = ['Our Company', 'Locations', 'Contact']
   const MotionBox = motion(Box)
   const MotionVStack = motion(VStack)
   const MotionLink = motion(Link)
@@ -54,14 +54,23 @@ const Header = () => {
       <Flex
         justify="space-between"
         align="center"
-        py={{ base: 6 }}
+        py={{ base: 6, md: 16 }}
         px={{ base: 6 }}
       >
         <CustomLink href="/">
-          <CustomImage image={LogoDark} w="202px" display="flex" />
+          <CustomImage
+            image={LogoDark}
+            maxW="202px"
+            display="flex"
+            alt="Designo Logo"
+          />
         </CustomLink>
 
-        <HStack spacing="8" display={{ base: 'none', md: 'flex' }}>
+        <HStack
+          spacing="8"
+          display={{ base: 'none', md: 'flex' }}
+          role="navigation"
+        >
           {navLinks.map((link, i) => (
             <Link
               key={i}
@@ -98,6 +107,7 @@ const Header = () => {
             w="full"
             bg="rgba(0,0,0,0.5)"
             h="100vh"
+            position="absolute"
             zIndex="overlay"
             display={{ md: 'none' }}
             initial="hidden"
