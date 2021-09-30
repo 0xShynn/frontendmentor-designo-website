@@ -110,7 +110,7 @@ const Footer = () => {
           w="full"
         >
           <Stack
-            spacing={{ base: 10, sm: 12, md: 16, lg: 28, xl: 36 }}
+            spacing={{ base: 10, md: 16, lg: 28, xl: 36 }}
             direction={{ base: 'column', md: 'row' }}
             textAlign={{ base: 'center', md: 'left' }}
             mb={{ base: 10, md: 0 }}
