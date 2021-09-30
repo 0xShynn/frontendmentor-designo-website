@@ -74,6 +74,7 @@ const Header = () => {
           {navLinks.map((link, i) => (
             <Link
               key={i}
+              href="/"
               textTransform="uppercase"
               fontSize="14px"
               letterSpacing="2px"
