@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request'
 
-import gqlClient from '../../graphQLClient'
+import gqlClient from '../../config/graphQLClient'
 import GET_FOOTER from '../shared/getFooter'
 
 const GET_HOME_PAGE = gql`
