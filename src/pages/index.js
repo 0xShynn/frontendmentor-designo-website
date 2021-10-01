@@ -3,8 +3,19 @@ import { NextSeo } from 'next-seo'
 
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import { getHomePage } from '../lib/graphql/queries/pages/getHomePage'
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const data = await getHomePage()
+
+  return {
+    props: {
+      data,
+    },
+  }
+}
+
+export default function Home({ data }) {
   return (
     <Box>
       {/* Edit the Head info */}
