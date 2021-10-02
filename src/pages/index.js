@@ -10,8 +10,8 @@ import { getHomePage } from '../lib/graphql/queries/pages/getHomePage'
 export const getStaticProps = async () => {
   const data = await getHomePage()
 
-  const footer =
-    data.footers.find((footer) => footer.slug === 'primary') ?? null
+  const footer = data?.footer ?? null
+  const header = data?.header ?? null
 
   let mdxBlocks = []
   if (footer !== null) {
@@ -41,7 +41,6 @@ export default function Home({ data, mdxBlocks }) {
         {mdxBlocks &&
           mdxBlocks.map((block, i) => <MDXRemote {...block} key={i} />)}
       </Flex>
-
       <Footer />
     </Box>
   )

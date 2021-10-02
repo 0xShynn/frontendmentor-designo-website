@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request'
 
 const GET_FOOTER = gql`
-  footers(where: {slug: "primary"}, stage: PUBLISHED) {
+  footer(where: {slug: "primary"}, stage: PUBLISHED) {
     id
     navigation {
       pages {
