@@ -24,6 +24,7 @@ const GET_FOOTER = gql`
         altText
       }
     }
+    slug
   }
 `
 
