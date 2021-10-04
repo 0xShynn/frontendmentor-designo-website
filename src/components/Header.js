@@ -3,11 +3,10 @@ import { useDisclosure } from '@chakra-ui/hooks'
 import { Box, Flex, HStack, Link, VStack } from '@chakra-ui/layout'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import LogoDark from '../assets/brand/logo-dark.png'
 import CloseIcon from '../assets/icons/ui/CloseIcon'
 import HamburgerMenuIcon from '../assets/icons/ui/HamburgerMenuIcon'
-import navLinks from '../utils/navLinks'
 
+import NavLinks from './NavLinks'
 import CustomImage from './utils/CustomImage'
 import CustomLink from './utils/CustomLink'
 
@@ -44,11 +43,17 @@ const FramerItem = {
   },
 }
 
-const Header = () => {
+const Header = ({ data }) => {
+  console.log(data)
   const { isOpen, onToggle } = useDisclosure()
+
   const MotionBox = motion(Box)
   const MotionVStack = motion(VStack)
   const MotionLink = motion(Link)
+
+  const logo = data?.logo ?? {}
+  const navLinks = data?.navigation?.pages ?? []
+
   return (
     <Box maxW="1110px" w="full" mx="auto">
       <Flex
@@ -59,10 +64,12 @@ const Header = () => {
       >
         <CustomLink href="/">
           <CustomImage
-            image={LogoDark}
-            maxW="202px"
+            image={logo.url}
+            w="202px"
             display="flex"
-            alt="Designo Logo"
+            width={logo.width}
+            height={logo.height}
+            alt={logo.altText}
           />
         </CustomLink>
 
@@ -71,19 +78,7 @@ const Header = () => {
           display={{ base: 'none', md: 'flex' }}
           role="navigation"
         >
-          {navLinks.map((link, i) => (
-            <Link
-              key={i}
-              href="/"
-              textTransform="uppercase"
-              fontSize="14px"
-              letterSpacing="2px"
-              lineHeight="14px"
-              _hover={{ textDecoration: 'underline' }}
-            >
-              {link}
-            </Link>
-          ))}
+          <NavLinks data={navLinks} linksColor="dark" />
         </HStack>
 
         <Box display={{ base: 'block', md: 'none' }}>
@@ -127,7 +122,7 @@ const Header = () => {
               {navLinks.map((link, i) => (
                 <MotionLink
                   key={i}
-                  href="/"
+                  href={`/${link.slug}`}
                   color="white"
                   fontSize="24px"
                   textTransform="uppercase"
@@ -136,7 +131,7 @@ const Header = () => {
                   _hover={{ textDecoration: 'underline' }}
                   variants={FramerItem}
                 >
-                  {link}
+                  {link.title}
                 </MotionLink>
               ))}
             </MotionVStack>

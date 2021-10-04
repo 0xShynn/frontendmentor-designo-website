@@ -4,26 +4,9 @@ import { MDXRemote } from 'next-mdx-remote'
 
 import renderSocialIcons from '../utils/renderSocialIcons'
 
+import NavLinks from './NavLinks'
 import CustomImage from './utils/CustomImage'
 import CustomLink from './utils/CustomLink'
-
-const FooterNav = ({ data }) => {
-  return data.map((link, i) => (
-    <CustomLink
-      key={i}
-      href={`/${link.slug}`}
-      textTransform="uppercase"
-      fontSize="14px"
-      letterSpacing="2px"
-      lineHeight="14px"
-      color="white"
-      bg="red.100"
-      _hover={{ textDecoration: 'underline' }}
-    >
-      {link.title}
-    </CustomLink>
-  ))
-}
 
 const Footer = ({ data }) => {
   const companyInfos = data?.companyInfos ?? []
@@ -58,7 +41,11 @@ const Footer = ({ data }) => {
             display={{ base: 'none', md: 'flex' }}
             role="navigation"
           >
-            <FooterNav data={navLinks} display={{ base: 'none', md: 'flex' }} />
+            <NavLinks
+              data={navLinks}
+              linksColor="light"
+              display={{ base: 'none', md: 'flex' }}
+            />
           </HStack>
         </Flex>
 
@@ -72,7 +59,7 @@ const Footer = ({ data }) => {
           mb="12"
           role="navigation"
         >
-          <FooterNav data={navLinks} />
+          <NavLinks data={navLinks} />
         </Stack>
 
         <Flex
