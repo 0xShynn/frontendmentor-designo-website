@@ -50,7 +50,7 @@ const Header = () => {
   const MotionVStack = motion(VStack)
   const MotionLink = motion(Link)
   return (
-    <Box maxW="1110px" w="full">
+    <Box maxW="1110px" w="full" mx="auto">
       <Flex
         justify="space-between"
         align="center"
