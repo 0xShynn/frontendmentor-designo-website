@@ -1,8 +1,6 @@
 import { gql } from 'graphql-request'
 
 import gqlClient from '../../config/graphQLClient'
-import GET_FOOTER from '../shared/getFooter'
-import GET_HEADER from '../shared/getHeader'
 
 const GET_HOME_PAGE = gql`
   query HomePage {
@@ -11,6 +9,20 @@ const GET_HOME_PAGE = gql`
       slug
       content {
         blocks {
+          ... on Hero {
+            title
+            image {
+              altText
+              url
+              height
+              width
+            }
+            description
+            button {
+              label
+              url
+            }
+          }
           ... on Feature {
             title
             description
@@ -36,8 +48,6 @@ const GET_HOME_PAGE = gql`
         title
       }
     }
-    ${GET_HEADER}
-    ${GET_FOOTER}
   }
 `
 
