@@ -1,47 +1,22 @@
-import { Box, Flex } from '@chakra-ui/layout'
-import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
+import { Box, Flex, Heading } from '@chakra-ui/layout'
 import { NextSeo } from 'next-seo'
 
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import { getHomePage } from '../lib/graphql/queries/pages/getHomePage'
+import Layout from '../components/Layout'
+import getLayoutData from '../utils/getLayoutData'
 
 export const getStaticProps = async () => {
-  const data = await getHomePage()
-
-  const footer = data?.footer ?? null
-  const header = data?.header ?? null
-
-  let mdxBlocks = []
-  if (footer !== null) {
-    for (const block of footer.companyInfos) {
-      const mdxInfo = await serialize(block.information)
-      mdxBlocks.push(mdxInfo)
-    }
-  }
-
-  return { props: { data, mdxBlocks } }
+  const data = await getLayoutData()
+  return { props: { data } }
 }
 
-export default function Home({ data, mdxBlocks }) {
+export default function Home({ data }) {
   return (
-    <Box>
+    <Layout data={data}>
       {/* Edit the Head info */}
       <NextSeo title="Home" description="Description" />
-
-      <Flex
-        role="main"
-        bg="white"
-        direction="column"
-        align="center"
-        justify="center"
-      >
-        <Header />
-        {mdxBlocks &&
-          mdxBlocks.map((block, i) => <MDXRemote {...block} key={i} />)}
+      <Flex bg="white" direction="column" align="center" justify="center">
+        <Heading>HELLO</Heading>
       </Flex>
-      <Footer />
-    </Box>
+    </Layout>
   )
 }
