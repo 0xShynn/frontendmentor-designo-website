@@ -8,7 +8,7 @@ const CustomLink = (props) => {
   if (internal) {
     return (
       <NextLink href={href} passHref>
-        <Link>{children}</Link>
+        <Link {...props}>{children}</Link>
       </NextLink>
     )
   }

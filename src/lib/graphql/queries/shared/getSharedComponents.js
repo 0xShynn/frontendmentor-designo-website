@@ -18,14 +18,14 @@ const GET_SHARED_COMPONENTS = gql`
       }
       logo {
         url
+        width
+        height
         altText
       }
       socialMedias {
         title
-        logo {
-          url
-          altText
-        }
+        socialLink
+        url
       }
       slug
     }

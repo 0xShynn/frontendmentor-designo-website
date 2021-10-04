@@ -2,58 +2,35 @@ import Icon from '@chakra-ui/icon'
 import { Box, Divider, Flex, Link, Stack, HStack } from '@chakra-ui/layout'
 import { MDXRemote } from 'next-mdx-remote'
 
-import LogoLight from '../assets/brand/logo-light.png'
-import IconFacebook from '../assets/icons/socials/IconFacebook'
-import IconInstagram from '../assets/icons/socials/IconInstagram'
-import IconPinterest from '../assets/icons/socials/IconPinterest'
-import IconTwitter from '../assets/icons/socials/IconTwitter'
-import IconYoutube from '../assets/icons/socials/IconYoutube'
-import navLinks from '../utils/navLinks'
+import renderSocialIcons from '../utils/renderSocialIcons'
 
 import CustomImage from './utils/CustomImage'
 import CustomLink from './utils/CustomLink'
 
-const socialLinks = [
-  {
-    icon: <IconFacebook />,
-    url: '/',
-  },
-  {
-    icon: <IconYoutube />,
-    url: '/',
-  },
-  {
-    icon: <IconTwitter />,
-    url: '/',
-  },
-  {
-    icon: <IconPinterest />,
-    url: '/',
-  },
-  {
-    icon: <IconInstagram />,
-    url: '/',
-  },
-]
-const FooterNav = () => {
-  return navLinks.map((link, i) => (
-    <Link
+const FooterNav = ({ data }) => {
+  return data.map((link, i) => (
+    <CustomLink
       key={i}
-      href="/"
+      href={`/${link.slug}`}
       textTransform="uppercase"
       fontSize="14px"
       letterSpacing="2px"
       lineHeight="14px"
       color="white"
+      bg="red.100"
       _hover={{ textDecoration: 'underline' }}
     >
-      {link}
-    </Link>
+      {link.title}
+    </CustomLink>
   ))
 }
 
 const Footer = ({ data }) => {
   const companyInfos = data?.companyInfos ?? []
+  const logo = data?.logo ?? {}
+  const navLinks = data?.navigation?.pages ?? []
+  const socialLinks = data?.socialMedias ?? []
+
   return (
     <Box w="full" bg="primary.black" role="contentinfo">
       <Flex
@@ -65,12 +42,14 @@ const Footer = ({ data }) => {
         mx="auto"
       >
         <Flex justify={{ base: 'center', md: 'space-between' }} w="full">
-          <CustomLink href="/">
+          <CustomLink href="/" cursor="pointer">
             <CustomImage
-              image={LogoLight}
+              image={logo.url}
               w="202px"
               display="flex"
-              alt="Designo Logo"
+              width={logo.width}
+              height={logo.height}
+              alt={logo.altText}
             />
           </CustomLink>
           <HStack
@@ -79,7 +58,7 @@ const Footer = ({ data }) => {
             display={{ base: 'none', md: 'flex' }}
             role="navigation"
           >
-            <FooterNav display={{ base: 'none', md: 'flex' }} />
+            <FooterNav data={navLinks} display={{ base: 'none', md: 'flex' }} />
           </HStack>
         </Flex>
 
@@ -93,7 +72,7 @@ const Footer = ({ data }) => {
           mb="12"
           role="navigation"
         >
-          <FooterNav />
+          <FooterNav data={navLinks} />
         </Stack>
 
         <Flex
@@ -118,15 +97,14 @@ const Footer = ({ data }) => {
 
           <HStack spacing="4">
             {socialLinks.map((item, i) => (
-              <Link key={i} href={item.url}>
-                <Icon
-                  color="primary.peach"
-                  boxSize="24px"
-                  transition="0.3s"
-                  _hover={{ color: 'secondary.lightpeach' }}
-                >
-                  {item.icon}
-                </Icon>
+              <Link
+                key={i}
+                href={item.url}
+                color="primary.peach"
+                display="inline-block"
+                _hover={{ color: 'secondary.lightpeach' }}
+              >
+                <Icon boxSize="24px">{renderSocialIcons(item.socialLink)}</Icon>
               </Link>
             ))}
           </HStack>
