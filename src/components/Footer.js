@@ -1,14 +1,6 @@
 import Icon from '@chakra-ui/icon'
-import {
-  Box,
-  Divider,
-  Flex,
-  Link,
-  Stack,
-  HStack,
-  Text,
-} from '@chakra-ui/layout'
-import { chakra } from '@chakra-ui/system'
+import { Box, Divider, Flex, Link, Stack, HStack } from '@chakra-ui/layout'
+import { MDXRemote } from 'next-mdx-remote'
 
 import LogoLight from '../assets/brand/logo-light.png'
 import IconFacebook from '../assets/icons/socials/IconFacebook'
@@ -60,7 +52,8 @@ const FooterNav = () => {
   ))
 }
 
-const Footer = () => {
+const Footer = ({ data }) => {
+  const companyInfos = data?.companyInfos ?? []
   return (
     <Box w="full" bg="primary.black" role="contentinfo">
       <Flex
@@ -115,20 +108,12 @@ const Footer = () => {
             textAlign={{ base: 'center', md: 'left' }}
             mb={{ base: 10, md: 0 }}
           >
-            <Text color="white" opacity="0.5">
-              <chakra.span fontWeight="700">Designo Central Office</chakra.span>
-              <br />
-              3886 Wellington Street <br />
-              Toronto, Ontario M9C 3J5
-            </Text>
-
-            <Text color="white" opacity="0.5">
-              <chakra.span fontWeight="700">
-                Contact Us (Central Office)
-              </chakra.span>
-              <br />P : +1 253-863-8967
-              <br />M : contact@designo.co
-            </Text>
+            {companyInfos &&
+              companyInfos.map((block, i) => (
+                <Box key={i} color="white" opacity="0.5">
+                  <MDXRemote {...block.informationMdx} />
+                </Box>
+              ))}
           </Stack>
 
           <HStack spacing="4">
