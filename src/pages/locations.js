@@ -1,11 +1,28 @@
-import { Box, Heading } from '@chakra-ui/layout'
+import { Box, Flex, Heading } from '@chakra-ui/layout'
+import { NextSeo } from 'next-seo'
 
-const locations = () => {
+import Layout from '../components/Layout'
+import getLayoutData from '../utils/getLayoutData'
+
+export const getStaticProps = async () => {
+  const data = await getLayoutData()
+
+  return {
+    props: {
+      data,
+    },
+  }
+}
+
+const Locations = ({ data }) => {
   return (
-    <Box>
-      <Heading>Locations</Heading>
-    </Box>
+    <Layout data={data}>
+      <NextSeo title="Locations" description="Description" />
+      <Flex bg="white" direction="column" align="center" justify="center">
+        <Heading>Locations</Heading>
+      </Flex>
+    </Layout>
   )
 }
 
-export default locations
+export default Locations

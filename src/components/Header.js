@@ -44,7 +44,6 @@ const FramerItem = {
 }
 
 const Header = ({ data }) => {
-  console.log(data)
   const { isOpen, onToggle } = useDisclosure()
 
   const MotionBox = motion(Box)

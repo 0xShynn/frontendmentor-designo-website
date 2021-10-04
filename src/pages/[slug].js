@@ -1,10 +1,17 @@
-import { Box, Heading } from '@chakra-ui/layout'
+import { Flex, Heading } from '@chakra-ui/layout'
+import { NextSeo } from 'next-seo'
 
-const ProjectsPage = ({ params }) => {
+import Layout from '../components/Layout'
+import getLayoutData from '../utils/getLayoutData'
+
+const ProjectsPage = ({ params, data }) => {
   return (
-    <Box>
-      <Heading>{params.slug}</Heading>
-    </Box>
+    <Layout data={data}>
+      <NextSeo title="Home" description="Description" />
+      <Flex bg="white" direction="column" align="center" justify="center">
+        <Heading>{params.slug}</Heading>
+      </Flex>
+    </Layout>
   )
 }
 
@@ -20,8 +27,9 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
+  const data = await getLayoutData()
   return {
-    props: { params },
+    props: { params, data },
   }
 }
 
