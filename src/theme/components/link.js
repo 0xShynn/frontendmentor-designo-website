@@ -4,7 +4,7 @@ const link = {
   baseStyle: {
     ...sharedBaseStyle,
     _hover: {
-      // textDecoration: 'none',
+      textDecoration: 'none',
     },
   },
   sizes: {
@@ -18,7 +18,7 @@ const link = {
     // Add here the shared variants from the sharedStyleLinkButton.js
   },
   defaultProps: {
-    // size: 'md',
+    size: 'md',
     // variant: 'light',
   },
 }

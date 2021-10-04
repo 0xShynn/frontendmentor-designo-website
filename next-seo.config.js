@@ -4,8 +4,9 @@
 const canonicalUrl = ''
 
 // Edit the default title
-const defaultTitle = 'Default title'
-const defaultDescription = 'Default description'
+const defaultTitle = 'Designo'
+const defaultDescription =
+  'With over 10 years in the industry, we are experienced in creating fully responsive websites, app design, and engaging brand experiences. Find out more about our services.'
 
 // Edit the SEO parameters
 export const SEO = {

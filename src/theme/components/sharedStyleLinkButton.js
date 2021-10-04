@@ -2,9 +2,25 @@ export const sharedBaseStyle = {
   // Write here some shared `base style` between Link and Button components
 }
 
+const sharedStyle = {
+  rounded: 'lg',
+  py: 4,
+  px: 6,
+  fontSize: '15px',
+  fontWeight: '600',
+  letterSpacing: '1px',
+  textTransform: 'uppercase',
+}
+
 export const light = {
   light: {
-    _hover: {},
+    ...sharedStyle,
+    bg: 'primary.peach',
+    color: 'white',
+    _hover: {
+      color: 'white',
+      bg: 'secondary.lightpeach',
+    },
     _disabled: {
       _hover: {},
     },
@@ -13,7 +29,13 @@ export const light = {
 
 export const dark = {
   dark: {
-    _hover: {},
+    ...sharedStyle,
+    bg: 'white',
+    color: 'primary.black',
+    _hover: {
+      color: 'white',
+      bg: 'secondary.lightpeach',
+    },
     _disabled: {
       _hover: {},
     },
