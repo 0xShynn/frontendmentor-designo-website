@@ -6,9 +6,8 @@ const heading = {
   // styles for different visual variants ("outline", "solid")
   variants: {
     h1: {
-      // you can also use responsive styles
-      fontSize: '48px',
-      lineHeight: '48px',
+      fontSize: ['32px', '32px', '48px'],
+      lineHeight: ['36px', '36px', '48px'],
     },
     h2: {
       fontSize: '40px',

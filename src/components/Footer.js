@@ -59,7 +59,7 @@ const Footer = ({ data }) => {
           mb="12"
           role="navigation"
         >
-          <NavLinks data={navLinks} />
+          <NavLinks data={navLinks} linksColor="light" />
         </Stack>
 
         <Flex
