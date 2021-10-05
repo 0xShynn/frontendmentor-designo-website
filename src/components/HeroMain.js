@@ -11,7 +11,7 @@ const HeroMain = ({ data }) => {
       direction={{ base: 'column', lg: 'row' }}
       px={{ base: 6, lg: 20, xl: 24 }}
       py={{ base: 16, md: 16, lg: 28, xl: 36 }}
-      mb={{ base: 0, md: 24 }}
+      mb="28"
       rounded={{ base: 'none', md: '2xl' }}
       w="full"
       h={{ base: '843px', lg: 'auto' }}

@@ -85,9 +85,8 @@ const Tile = ({ title, button, bgImage }) => {
 }
 
 const ProjectsTile = ({ data }) => {
-  console.log(data)
   return (
-    <Box py="6" w="full" mb="24" px={{ base: 6, md: 0 }}>
+    <Box w="full" mb="28" px={{ base: 6, md: 0 }}>
       <Grid
         gap={6}
         templateColumns="repeat(2, 1fr)"
