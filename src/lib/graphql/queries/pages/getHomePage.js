@@ -36,6 +36,7 @@ const GET_HOME_PAGE = gql`
           ... on ProjectsTile {
             id
             title
+            slug
             imageBackground {
               height
               altText

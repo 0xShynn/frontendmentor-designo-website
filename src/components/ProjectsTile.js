@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
-const Tile = ({ title, bgImage }) => {
+const Tile = ({ title, slug, bgImage }) => {
   const mobileBgImage =
     bgImage?.find((bgImage) => bgImage.imageSize === 'mobile') ?? null
   const tabletBgImage =
@@ -21,8 +21,6 @@ const Tile = ({ title, bgImage }) => {
     <LinkBox
       h="full"
       pos="relative"
-      rounded="2xl"
-      overflow="hidden"
       sx={{
         ':hover > .bg': {
           bgColor: 'primary.blendpeach',
@@ -50,7 +48,7 @@ const Tile = ({ title, bgImage }) => {
           >
             {title}
           </Heading>
-          <NextLink href={`/web-design`} passHref>
+          <NextLink href={`/${slug}`} passHref>
             <LinkOverlay
               fontSize="15px"
               fontWeight="600"
@@ -70,6 +68,7 @@ const Tile = ({ title, bgImage }) => {
         pos="absolute"
         w="full"
         h="full"
+        rounded="2xl"
         bgImage={{
           base: mobileBgImage.url,
           md: tabletBgImage.url,
@@ -86,6 +85,7 @@ const Tile = ({ title, bgImage }) => {
 }
 
 const ProjectsTile = ({ data }) => {
+  console.log(data)
   return (
     <Box py="6" w="full" mb="24" px={{ base: 6, md: 0 }}>
       <Grid
@@ -102,7 +102,11 @@ const ProjectsTile = ({ data }) => {
                 tile.title === 'Web Design' ? { base: '1', lg: '2' } : '1'
               }
             >
-              <Tile title={tile.title} bgImage={tile.imageBackground} />
+              <Tile
+                title={tile.title}
+                bgImage={tile.imageBackground}
+                slug={tile.slug}
+              />
             </GridItem>
           )
         })}
