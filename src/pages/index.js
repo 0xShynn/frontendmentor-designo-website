@@ -3,6 +3,7 @@ import { NextSeo } from 'next-seo'
 
 import HeroMain from '../components/HeroMain'
 import Layout from '../components/Layout'
+import ProjectsTile from '../components/ProjectsTile'
 import { getHomePage } from '../lib/graphql/queries/pages/getHomePage'
 import getLayoutData from '../utils/getLayoutData'
 
@@ -13,10 +14,15 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ data, page }) {
-  const hero =
-    page?.content.filter((block) => block.id === 'ckucqkp9seg5d0c60wvntwnf9') ??
-    {}
-  const heroHome = hero[0]?.blocks[0] ?? null
+  const selectedHero = page?.content.filter(
+    (block) => block.id === 'ckucqkp9seg5d0c60wvntwnf9'
+  )
+  const homeHeroBlocks = selectedHero[0]?.blocks[0] ?? null
+
+  const selectedProjectsTile = page?.content.filter(
+    (block) => block.id === 'cku8f53wwln1s0d00907fraol'
+  )
+  const homeProjectsTile = selectedProjectsTile[0]?.blocks ?? null
 
   return (
     <Layout data={data}>
@@ -32,7 +38,8 @@ export default function Home({ data, page }) {
         px={{ base: 0, md: 6 }}
         boxSizing="content-box"
       >
-        {heroHome && <HeroMain data={heroHome} />}
+        {homeHeroBlocks && <HeroMain data={homeHeroBlocks} />}
+        {homeProjectsTile && <ProjectsTile data={homeProjectsTile} />}
       </Flex>
     </Layout>
   )

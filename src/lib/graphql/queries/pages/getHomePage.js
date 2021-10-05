@@ -41,6 +41,7 @@ const GET_HOME_PAGE = gql`
               altText
               url
               width
+              imageSize
             }
           }
         }
