@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
-const Tile = ({ title, slug, bgImage }) => {
+const Tile = ({ title, button, bgImage }) => {
   const mobileBgImage =
     bgImage?.find((bgImage) => bgImage.imageSize === 'mobile') ?? null
   const tabletBgImage =
@@ -48,7 +48,7 @@ const Tile = ({ title, slug, bgImage }) => {
           >
             {title}
           </Heading>
-          <NextLink href={`/${slug}`} passHref>
+          <NextLink href={`/${button.url}`} passHref>
             <LinkOverlay
               fontSize="15px"
               fontWeight="600"
@@ -56,7 +56,7 @@ const Tile = ({ title, slug, bgImage }) => {
               textTransform="uppercase"
               color="white"
             >
-              View Projects
+              {button.label}
             </LinkOverlay>
           </NextLink>
         </Flex>
@@ -105,7 +105,7 @@ const ProjectsTile = ({ data }) => {
               <Tile
                 title={tile.title}
                 bgImage={tile.imageBackground}
-                slug={tile.slug}
+                button={tile.button}
               />
             </GridItem>
           )
