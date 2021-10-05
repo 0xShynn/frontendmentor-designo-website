@@ -9,7 +9,7 @@ const HeroMain = ({ data }) => {
     <Flex
       bg="primary.peach"
       direction={{ base: 'column', lg: 'row' }}
-      px={{ base: 6, lg: 20, xl: 24 }}
+      px={{ base: 6, md: 8, lg: 20, xl: 24 }}
       py={{ base: 16, md: 16, lg: 28, xl: 36 }}
       mb="28"
       rounded={{ base: 'none', md: '2xl' }}

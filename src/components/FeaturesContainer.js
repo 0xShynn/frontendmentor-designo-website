@@ -23,7 +23,7 @@ const Feature = ({ title, description, image, index }) => {
       align="center"
       direction={{ base: 'column', md: 'row', lg: 'column' }}
       maxW={{ base: '350px', md: '690px' }}
-      px={{ base: '6', md: 0 }}
+      px={{ base: 6, md: 0 }}
     >
       <Box pos="relative" mb={{ base: 12, md: 0, lg: 12 }}>
         <CustomImage

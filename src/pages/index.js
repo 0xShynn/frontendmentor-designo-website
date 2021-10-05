@@ -38,7 +38,7 @@ export default function Home({ data, page }) {
         justify="center"
         maxW="1110px"
         mx="auto"
-        px={{ base: 0, md: 6 }}
+        px={{ base: 0, md: 8 }}
         boxSizing="content-box"
       >
         {homeHeroBlocks && <HeroMain data={homeHeroBlocks} />}
