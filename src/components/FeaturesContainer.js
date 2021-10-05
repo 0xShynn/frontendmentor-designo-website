@@ -21,11 +21,11 @@ const Feature = ({ title, description, image, index }) => {
       w="full"
       justify="center"
       align="center"
-      direction={{ base: 'column', md: 'row' }}
+      direction={{ base: 'column', md: 'row', lg: 'column' }}
       maxW={{ base: '350px', md: '690px' }}
       px={{ base: '6', md: 0 }}
     >
-      <Box pos="relative" mb={{ base: 12, md: 0 }}>
+      <Box pos="relative" mb={{ base: 12, md: 0, lg: 12 }}>
         <CustomImage
           image={image.url}
           width="202px"
@@ -42,7 +42,11 @@ const Feature = ({ title, description, image, index }) => {
           transform={`rotate(${rotateBackgroundImage(index)})`}
         />
       </Box>
-      <Box textAlign={{ base: 'center', md: 'left' }} ml={{ md: 12 }} flex="1">
+      <Box
+        textAlign={{ base: 'center', md: 'left', lg: 'center' }}
+        ml={{ md: 12, lg: 0 }}
+        flex="1"
+      >
         <Heading as="h3" variant="h3" mb={{ base: 8, md: 4 }}>
           {title}
         </Heading>
@@ -58,7 +62,7 @@ const FeaturesContainer = ({ data }) => {
     <Stack
       w="full"
       justify="center"
-      align="center"
+      align={{ base: 'center', lg: 'flex-start' }}
       direction={{ base: 'column', lg: 'row' }}
       spacing={{ base: 20, md: 8 }}
       mb="32"
