@@ -1,6 +1,13 @@
-import { Box, Flex, Grid, GridItem, Heading } from '@chakra-ui/react'
-
-import CustomLink from './utils/CustomLink'
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  LinkBox,
+  LinkOverlay,
+} from '@chakra-ui/react'
+import NextLink from 'next/link'
 
 const Tile = ({ title, bgImage }) => {
   const mobileBgImage =
@@ -11,37 +18,76 @@ const Tile = ({ title, bgImage }) => {
     bgImage?.find((bgImage) => bgImage.imageSize === 'desktop') ?? null
 
   return (
-    <Flex
-      py={{ base: 24, md: 16, lg: 20, xl: 24 }}
-      px="6"
-      bg="red.100"
-      rounded="2xl"
+    <LinkBox
       h="full"
-      align="center"
-      justify="center"
-      direction="column"
-      bgImage={{
-        base: mobileBgImage.url,
-        md: tabletBgImage.url,
-        lg: desktopBgImage.url,
+      pos="relative"
+      rounded="2xl"
+      overflow="hidden"
+      sx={{
+        ':hover > .bg': {
+          bgColor: 'primary.blendpeach',
+          bgBlendMode: 'soft-light',
+          opacity: '0.7',
+        },
       }}
-      bgPos="center"
-      bgSize="cover"
-      textAlign="center"
     >
-      <Heading as="h2" variant="h3" color="white">
-        {title}
-      </Heading>
-      <CustomLink href="/" color="white">
-        View Projects
-      </CustomLink>
-    </Flex>
+      <Box zIndex="overlay" pos="relative" h="full">
+        <Flex
+          direction="column"
+          textAlign="center"
+          align="center"
+          justify="center"
+          h="full"
+          py={{ base: 24, md: 16, lg: 20, xl: 24 }}
+        >
+          <Heading
+            as="h2"
+            variant="h2"
+            color="white"
+            textTransform="uppercase"
+            fontWeight="600"
+            mb={{ base: 4, xl: 6 }}
+          >
+            {title}
+          </Heading>
+          <NextLink href={`/web-design`} passHref>
+            <LinkOverlay
+              fontSize="15px"
+              fontWeight="600"
+              letterSpacing="5px"
+              textTransform="uppercase"
+              color="white"
+            >
+              View Projects
+            </LinkOverlay>
+          </NextLink>
+        </Flex>
+      </Box>
+      <Box
+        className="bg"
+        transition="0.2s"
+        zIndex="base"
+        pos="absolute"
+        w="full"
+        h="full"
+        bgImage={{
+          base: mobileBgImage.url,
+          md: tabletBgImage.url,
+          lg: desktopBgImage.url,
+        }}
+        bgBlendMode="multiply"
+        bgColor="hsla(207, 100%, 0%, 0.6)"
+        bgPos="center"
+        bgSize="cover"
+        top="0"
+      />
+    </LinkBox>
   )
 }
 
 const ProjectsTile = ({ data }) => {
   return (
-    <Box p="6" w="full" mb="24">
+    <Box py="6" w="full" mb="24" px={{ base: 6, md: 0 }}>
       <Grid
         gap={6}
         templateColumns="repeat(2, 1fr)"

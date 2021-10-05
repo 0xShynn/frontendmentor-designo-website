@@ -2,6 +2,7 @@
 const colors = {
   primary: {
     peach: '#E7806B',
+    blendpeach: '#c95c46',
     black: '#1D1C1E',
   },
   secondary: {
