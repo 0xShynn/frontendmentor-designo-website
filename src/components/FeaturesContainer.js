@@ -21,17 +21,18 @@ const Feature = ({ title, description, image, index }) => {
       w="full"
       justify="center"
       align="center"
-      direction="column"
-      textAlign="center"
-      maxW="350px"
-      px="6"
+      direction={{ base: 'column', md: 'row' }}
+      maxW={{ base: '350px', md: '690px' }}
+      px={{ base: '6', md: 0 }}
     >
-      <Box pos="relative" mb="12">
+      <Box pos="relative" mb={{ base: 12, md: 0 }}>
         <CustomImage
           image={image.url}
           width="202px"
           height="202px"
           pos="absolute"
+          top="0"
+          left="0"
           zIndex="overlay"
         />
         <CustomImage
@@ -41,10 +42,12 @@ const Feature = ({ title, description, image, index }) => {
           transform={`rotate(${rotateBackgroundImage(index)})`}
         />
       </Box>
-      <Heading as="h3" variant="h3" mb="8">
-        {title}
-      </Heading>
-      <Text>{description}</Text>
+      <Box textAlign={{ base: 'center', md: 'left' }} ml={{ md: 12 }} flex="1">
+        <Heading as="h3" variant="h3" mb={{ base: 8, md: 4 }}>
+          {title}
+        </Heading>
+        <Text>{description}</Text>
+      </Box>
     </Flex>
   )
 }
@@ -56,8 +59,8 @@ const FeaturesContainer = ({ data }) => {
       w="full"
       justify="center"
       align="center"
-      direction={{ base: 'column', md: 'row' }}
-      spacing="20"
+      direction={{ base: 'column', lg: 'row' }}
+      spacing={{ base: 20, md: 8 }}
       mb="32"
     >
       {data.map((feature, i) => (
