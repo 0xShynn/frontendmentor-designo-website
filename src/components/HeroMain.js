@@ -29,7 +29,6 @@ const HeroMain = ({ data }) => {
     >
       <Box
         maxW={{ base: '540px', lg: '440px', xl: '540px' }}
-        w="max-content"
         textAlign={{ base: 'center', lg: 'left' }}
         mx="auto"
       >
