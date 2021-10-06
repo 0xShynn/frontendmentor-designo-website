@@ -7,6 +7,7 @@ const colors = {
   },
   secondary: {
     lightpeach: '#FFAC9B',
+    verylightpeach: '#FDF3F0',
     darkgrey: '#333136',
     lightgrey: '#F3F5F6',
   },

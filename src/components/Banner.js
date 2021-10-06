@@ -1,8 +1,6 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
-import CustomLink from './utils/CustomLink'
-
-const Banner = ({ title, subtitle, button }) => {
+const Banner = ({ children }) => {
   return (
     <Box
       color="white"
@@ -17,28 +15,7 @@ const Banner = ({ title, subtitle, button }) => {
       pos="relative"
       maxW="1110px"
     >
-      <Flex
-        maxW={{ base: '435px', lg: 'unset' }}
-        mx="auto"
-        direction={{ base: 'column', lg: 'row' }}
-        justify="space-between"
-        w="full"
-        align="center"
-      >
-        <Flex
-          direction="column"
-          textAlign={{ base: 'center', lg: 'left' }}
-          maxW={{ base: 'full', lg: '460px' }}
-        >
-          <Heading as="h3" variant="h1" mb="6">
-            {title}
-          </Heading>
-          <Text mb="6">{subtitle}</Text>
-        </Flex>
-        <CustomLink href={button.url} variant="dark" display="inline-flex">
-          {button.label}
-        </CustomLink>
-      </Flex>
+      {children}
     </Box>
   )
 }

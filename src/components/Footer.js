@@ -1,5 +1,6 @@
 import Icon from '@chakra-ui/icon'
 import { Box, Divider, Flex, Link, Stack, HStack } from '@chakra-ui/layout'
+import { Heading, Text } from '@chakra-ui/react'
 import { MDXRemote } from 'next-mdx-remote'
 
 import renderSocialIcons from '../utils/renderSocialIcons'
@@ -20,12 +21,39 @@ const Footer = ({ data }) => {
     <Box w="full" bg="primary.black" role="contentinfo">
       <Box bg="white" pos="relative">
         <Box w="full" h="50%" bg="primary.black" pos="absolute" bottom="0" />
-        <Banner
-          title={banner.title}
-          subtitle={banner.subtitle}
-          button={banner.button}
-        />
+        <Banner>
+          <Flex
+            maxW={{ base: '435px', lg: 'unset' }}
+            mx="auto"
+            direction={{ base: 'column', lg: 'row' }}
+            justify="space-between"
+            align="center"
+          >
+            {(banner.title || banner.subtitle) && (
+              <Flex
+                direction="column"
+                textAlign={{ base: 'center', lg: 'left' }}
+                maxW={{ base: 'full', lg: '460px' }}
+              >
+                <Heading as="h3" variant="h1" mb="6">
+                  {banner.title}
+                </Heading>
+                <Text mb="6">{banner.subtitle}</Text>
+              </Flex>
+            )}
+            {banner.button && (
+              <CustomLink
+                href={banner.button.url}
+                variant="dark"
+                display="inline-flex"
+              >
+                {banner.button.label}
+              </CustomLink>
+            )}
+          </Flex>
+        </Banner>
       </Box>
+
       <Flex
         direction={{ base: 'column' }}
         align="center"
