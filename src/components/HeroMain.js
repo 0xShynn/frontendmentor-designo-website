@@ -1,6 +1,8 @@
-import { Box, Flex, Heading, Link, Text } from '@chakra-ui/layout'
+import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
 
 import CustomImage from '../components/utils/CustomImage'
+
+import CustomLink from './utils/CustomLink'
 
 const HeroMain = ({ data }) => {
   const { title, description, button, image } = data
@@ -51,14 +53,15 @@ const HeroMain = ({ data }) => {
         )}
 
         {button && (
-          <Link
+          <CustomLink
+            href="/"
             textTransform="uppercase"
             variant="dark"
             display="inline-block"
             mb={{ base: 12, lg: 0 }}
           >
             {button.label}
-          </Link>
+          </CustomLink>
         )}
       </Box>
 
