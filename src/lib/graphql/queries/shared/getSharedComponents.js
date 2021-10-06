@@ -28,6 +28,14 @@ const GET_SHARED_COMPONENTS = gql`
         url
       }
       slug
+      banner {
+        title
+        subtitle
+        button {
+          url
+          label
+        }
+      }
     }
     header(stage: PUBLISHED, where: { slug: "primary" }) {
       id

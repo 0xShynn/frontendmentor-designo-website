@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote'
 
 import renderSocialIcons from '../utils/renderSocialIcons'
 
+import Banner from './Banner'
 import NavLinks from './NavLinks'
 import CustomImage from './utils/CustomImage'
 import CustomLink from './utils/CustomLink'
@@ -13,9 +14,18 @@ const Footer = ({ data }) => {
   const logo = data?.logo ?? {}
   const navLinks = data?.navigation?.pages ?? []
   const socialLinks = data?.socialMedias ?? []
+  const banner = data?.banner ?? {}
 
   return (
     <Box w="full" bg="primary.black" role="contentinfo">
+      <Box bg="white" pos="relative">
+        <Box w="full" h="50%" bg="primary.black" pos="absolute" bottom="0" />
+        <Banner
+          title={banner.title}
+          subtitle={banner.subtitle}
+          button={banner.button}
+        />
+      </Box>
       <Flex
         direction={{ base: 'column' }}
         align="center"
