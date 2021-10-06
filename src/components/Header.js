@@ -1,6 +1,6 @@
 import { IconButton } from '@chakra-ui/button'
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Box, Flex, HStack, Link, VStack } from '@chakra-ui/layout'
+import { Box, Flex, HStack, VStack } from '@chakra-ui/layout'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import CloseIcon from '../assets/icons/ui/CloseIcon'
@@ -48,7 +48,6 @@ const Header = ({ data }) => {
 
   const MotionBox = motion(Box)
   const MotionVStack = motion(VStack)
-  const MotionLink = motion(Link)
 
   const logo = data?.logo ?? {}
   const navLinks = data?.navigation?.pages ?? []
@@ -119,19 +118,19 @@ const Header = ({ data }) => {
               variants={FramerMenu}
             >
               {navLinks.map((link, i) => (
-                <MotionLink
-                  key={i}
-                  href={`/${link.slug}`}
-                  color="white"
-                  fontSize="24px"
-                  textTransform="uppercase"
-                  letterSpacing="2px"
-                  lineHeight="25px"
-                  _hover={{ textDecoration: 'underline' }}
-                  variants={FramerItem}
-                >
-                  {link.title}
-                </MotionLink>
+                <MotionBox key={i} variants={FramerItem}>
+                  <CustomLink
+                    href={`/${link.slug}`}
+                    color="white"
+                    fontSize="24px"
+                    textTransform="uppercase"
+                    letterSpacing="2px"
+                    lineHeight="25px"
+                    _hover={{ textDecoration: 'underline' }}
+                  >
+                    {link.title}
+                  </CustomLink>
+                </MotionBox>
               ))}
             </MotionVStack>
           </MotionBox>

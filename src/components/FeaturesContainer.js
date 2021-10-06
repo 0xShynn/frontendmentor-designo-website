@@ -57,7 +57,6 @@ const Feature = ({ title, description, image, index }) => {
 }
 
 const FeaturesContainer = ({ data }) => {
-  console.log(data)
   return (
     <Stack
       w="full"
