@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from '@chakra-ui/layout'
+import { Flex, Heading } from '@chakra-ui/layout'
 import { NextSeo } from 'next-seo'
 
 import Layout from '../components/Layout'
