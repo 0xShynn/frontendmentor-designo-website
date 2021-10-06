@@ -39,31 +39,45 @@ const ProjectsPage = ({ data, page }) => {
         </Banner>
 
         <SimpleGrid
-          columns={{ base: 1, md: 2 }}
+          columns={{ base: 1, lg: 3 }}
           w="full"
-          px="6"
+          px={{ base: 6, lg: 8 }}
           spacing="6"
           py="20"
         >
           {projects.map((project, i) => (
-            <Box key={i} rounded="2xl" overflow="hidden">
-              <Box bg="secondary.verylightpeach">
-                <Box pos="relative">
-                  <NextImage
-                    src={project.image.url}
-                    layout="responsive"
-                    width={project.image?.width ?? 0}
-                    height={project.image?.height ?? 0}
-                  />
-                </Box>
-                <Box textAlign="center" py="8" px="6">
+            <Flex
+              key={i}
+              rounded="2xl"
+              overflow="hidden"
+              direction={{ base: 'column', md: 'row', lg: 'column' }}
+              maxW={{ base: '327px', md: 'unset', lg: '350px' }}
+              w="full"
+              mx="auto"
+            >
+              <Box pos="relative" w={{ base: 'full', md: '339px', lg: 'full' }}>
+                <NextImage
+                  src={project.image.url}
+                  layout="responsive"
+                  width={project.image?.width ?? 0}
+                  height={project.image?.height ?? 0}
+                />
+              </Box>
+              <Flex
+                bg="secondary.verylightpeach"
+                w="full"
+                flex="1"
+                px={{ base: 6, md: 0 }}
+                align="center"
+              >
+                <Box textAlign="center" py="8" maxW="280px" mx="auto">
                   <Heading as="h3" variant="h3" color="primary.peach" mb="4">
                     {project.title}
                   </Heading>
                   <Text color="primary.black">{project.description}</Text>
                 </Box>
-              </Box>
-            </Box>
+              </Flex>
+            </Flex>
           ))}
         </SimpleGrid>
       </Flex>
