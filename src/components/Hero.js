@@ -9,7 +9,10 @@ const Hero = ({ title, content, image, imageSide, theme }) => {
       rounded={{ base: 'none', md: '2xl' }}
       mb={{ md: 28, xl: 36 }}
       overflow="hidden"
-      direction={{ base: 'column', lg: 'row-reverse' }}
+      direction={{
+        base: imageSide === 'right' ? 'column' : 'column-reverse',
+        lg: 'row-reverse',
+      }}
       w="full"
       // bgImage={{
       //   base: 'images/bg-pattern-hero-about-mobile.svg',
