@@ -27,13 +27,15 @@ const ProjectsPage = ({ data, page }) => {
         mx="auto"
       >
         {(title || description) && (
-          <Banner>
+          <Banner noPadding>
             <Flex justify="center" align="center" direction="column">
-              <Box maxW="390px" mx="auto" textAlign="center">
+              <Box textAlign="center">
                 <Heading as="h1" variant="h1" mb="6">
                   {title}
                 </Heading>
-                <Text>{description}</Text>
+                <Text maxW="390px" mx="auto">
+                  {description}
+                </Text>
               </Box>
             </Flex>
           </Banner>
@@ -43,7 +45,7 @@ const ProjectsPage = ({ data, page }) => {
           <SimpleGrid
             columns={{ base: 1, lg: 3 }}
             w="full"
-            px={{ base: 6, lg: 8 }}
+            px={{ base: 6, md: 8 }}
             spacing="6"
             py="20"
           >

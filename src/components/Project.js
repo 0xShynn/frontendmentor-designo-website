@@ -3,7 +3,6 @@ import { Box, Text } from '@chakra-ui/react'
 import NextImage from 'next/image'
 
 const Project = ({ title, image, description }) => {
-  console.log(description)
   return (
     <Flex
       rounded="2xl"
