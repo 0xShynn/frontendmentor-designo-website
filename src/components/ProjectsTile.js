@@ -85,12 +85,13 @@ const Tile = ({ title, button, bgImage }) => {
 }
 
 const ProjectsTile = ({ data }) => {
+  const tilesCount = data.length
   return (
-    <Box w="full" mb="28" px={{ base: 6, md: 0 }}>
+    <Box w="full" mb="28" px={{ base: 6, md: 8, xl: 0 }}>
       <Grid
         gap={6}
         templateColumns="repeat(2, 1fr)"
-        templateRows="repeat(2, 1fr)"
+        templateRows={`repeat(${tilesCount === 3 ? '2' : '1'}, 1fr)`}
       >
         {data.map((tile, i) => {
           return (
@@ -98,7 +99,7 @@ const ProjectsTile = ({ data }) => {
               key={i}
               colSpan={{ base: '2', lg: '1' }}
               rowSpan={
-                tile.title === 'Web Design' ? { base: '1', lg: '2' } : '1'
+                i === 0 && tilesCount === 3 ? { base: '1', lg: '2' } : '1'
               }
             >
               <Tile

@@ -27,6 +27,10 @@ const GET_PROJECTS_PAGE = gql`
           altText
           imageSize
         }
+        button {
+          label
+          url
+        }
       }
     }
   }
