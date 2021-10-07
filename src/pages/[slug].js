@@ -61,7 +61,11 @@ const ProjectsPage = ({ data, page }) => {
           </SimpleGrid>
         )}
 
-        {projectsTiles && <ProjectTilesContainer data={projectsTiles} />}
+        {projectsTiles && (
+          <Box w="full" px={{ base: 0, md: 8, xl: 0 }}>
+            <ProjectTilesContainer data={projectsTiles} />
+          </Box>
+        )}
       </Flex>
     </Layout>
   )
