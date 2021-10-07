@@ -4,7 +4,7 @@ import { NextSeo } from 'next-seo'
 import FeaturesContainer from '../components/FeaturesContainer'
 import HeroMain from '../components/HeroMain'
 import Layout from '../components/Layout'
-import ProjectsTile from '../components/ProjectsTile'
+import ProjectTilesContainer from '../components/ProjectTilesContainer'
 import { getHomePage } from '../lib/graphql/queries/pages/getHomePage'
 import getLayoutData from '../utils/getLayoutData'
 
@@ -42,7 +42,7 @@ export default function Home({ data, page }) {
         boxSizing="content-box"
       >
         {homeHeroBlocks && <HeroMain data={homeHeroBlocks} />}
-        {homeProjectsTile && <ProjectsTile data={homeProjectsTile} />}
+        {homeProjectsTile && <ProjectTilesContainer data={homeProjectsTile} />}
         {homeFeaturesBlocks && <FeaturesContainer data={homeFeaturesBlocks} />}
       </Flex>
     </Layout>

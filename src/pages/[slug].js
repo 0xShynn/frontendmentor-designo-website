@@ -5,7 +5,7 @@ import { NextSeo } from 'next-seo'
 import Banner from '../components/Banner'
 import Layout from '../components/Layout'
 import Project from '../components/Project'
-import ProjectsTile from '../components/ProjectsTile'
+import ProjectTilesContainer from '../components/ProjectTilesContainer'
 import { getProjectsPage } from '../lib/graphql/queries/pages/getProjectsPage'
 import { getProjectsPagePaths } from '../lib/graphql/queries/paths/getProjectsPagePaths'
 import getLayoutData from '../utils/getLayoutData'
@@ -61,7 +61,7 @@ const ProjectsPage = ({ data, page }) => {
           </SimpleGrid>
         )}
 
-        {projectsTiles && <ProjectsTile data={projectsTiles} />}
+        {projectsTiles && <ProjectTilesContainer data={projectsTiles} />}
       </Flex>
     </Layout>
   )
