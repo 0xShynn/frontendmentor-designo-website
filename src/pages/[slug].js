@@ -48,7 +48,7 @@ const ProjectsPage = ({ data, page }) => {
             w="full"
             px={{ base: 6, md: 8, xl: 0 }}
             spacing="6"
-            py="20"
+            py="28"
           >
             {projects.map((project, i) => (
               <Project
