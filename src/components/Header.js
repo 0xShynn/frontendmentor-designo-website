@@ -58,7 +58,7 @@ const Header = ({ data }) => {
         justify="space-between"
         align="center"
         py={{ base: 6, md: 16 }}
-        px={{ base: 6, md: 8 }}
+        px={{ base: 6, md: 8, xl: 0 }}
       >
         <CustomLink href="/">
           <CustomImage

@@ -45,7 +45,7 @@ const ProjectsPage = ({ data, page }) => {
           <SimpleGrid
             columns={{ base: 1, lg: 3 }}
             w="full"
-            px={{ base: 6, md: 8 }}
+            px={{ base: 6, md: 8, xl: 0 }}
             spacing="6"
             py="20"
           >

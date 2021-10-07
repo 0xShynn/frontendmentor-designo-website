@@ -4,7 +4,7 @@ const Banner = ({ children, noPadding }) => {
   return (
     <Box
       maxW="1110px"
-      px={{ base: noPadding ? 0 : 6, md: 8 }}
+      px={{ base: noPadding ? 0 : 6, md: 8, xl: 0 }}
       w="full"
       mx="auto"
       boxSizing="border-box"

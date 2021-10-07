@@ -57,7 +57,7 @@ const Footer = ({ data }) => {
       <Flex
         direction={{ base: 'column' }}
         align="center"
-        px={{ base: 6, md: 8 }}
+        px={{ base: 6, md: 8, xl: 0 }}
         py={{ base: 16, md: 20 }}
         maxW="1110px"
         mx="auto"
