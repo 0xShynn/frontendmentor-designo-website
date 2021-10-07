@@ -1,11 +1,10 @@
 import { Flex, Heading } from '@chakra-ui/layout'
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
-import { gt } from 'lodash'
 import { NextSeo } from 'next-seo'
-import NextImage from 'next/image'
 
 import Banner from '../components/Banner'
 import Layout from '../components/Layout'
+import Project from '../components/Project'
 import { getProjectsPage } from '../lib/graphql/queries/pages/getProjectsPage'
 import { getProjectsPagePaths } from '../lib/graphql/queries/paths/getProjectsPagePaths'
 import getLayoutData from '../utils/getLayoutData'
@@ -15,7 +14,7 @@ const ProjectsPage = ({ data, page }) => {
   const title = projectsPage?.title ?? ''
   const description = projectsPage?.description
   const projects = projectsPage?.projects ?? []
-  const projectsTile = projectsPage?.projectsTile ?? []
+  // const projectsTile = projectsPage?.projectsTile ?? []
 
   return (
     <Layout data={data}>
@@ -27,59 +26,37 @@ const ProjectsPage = ({ data, page }) => {
         maxW="1110px"
         mx="auto"
       >
-        <Banner>
-          <Flex justify="center" align="center" direction="column">
-            <Box maxW="390px" mx="auto" textAlign="center">
-              <Heading as="h1" variant="h1" mb="6">
-                {title}
-              </Heading>
-              <Text>{description}</Text>
-            </Box>
-          </Flex>
-        </Banner>
-
-        <SimpleGrid
-          columns={{ base: 1, lg: 3 }}
-          w="full"
-          px={{ base: 6, lg: 8 }}
-          spacing="6"
-          py="20"
-        >
-          {projects.map((project, i) => (
-            <Flex
-              key={i}
-              rounded="2xl"
-              overflow="hidden"
-              direction={{ base: 'column', md: 'row', lg: 'column' }}
-              maxW={{ base: '327px', md: 'unset', lg: '350px' }}
-              w="full"
-              mx="auto"
-            >
-              <Box pos="relative" w={{ base: 'full', md: '339px', lg: 'full' }}>
-                <NextImage
-                  src={project.image.url}
-                  layout="responsive"
-                  width={project.image?.width ?? 0}
-                  height={project.image?.height ?? 0}
-                />
+        {(title || description) && (
+          <Banner>
+            <Flex justify="center" align="center" direction="column">
+              <Box maxW="390px" mx="auto" textAlign="center">
+                <Heading as="h1" variant="h1" mb="6">
+                  {title}
+                </Heading>
+                <Text>{description}</Text>
               </Box>
-              <Flex
-                bg="secondary.verylightpeach"
-                w="full"
-                flex="1"
-                px={{ base: 6, md: 0 }}
-                align="center"
-              >
-                <Box textAlign="center" py="8" maxW="280px" mx="auto">
-                  <Heading as="h3" variant="h3" color="primary.peach" mb="4">
-                    {project.title}
-                  </Heading>
-                  <Text color="primary.black">{project.description}</Text>
-                </Box>
-              </Flex>
             </Flex>
-          ))}
-        </SimpleGrid>
+          </Banner>
+        )}
+
+        {projects && (
+          <SimpleGrid
+            columns={{ base: 1, lg: 3 }}
+            w="full"
+            px={{ base: 6, lg: 8 }}
+            spacing="6"
+            py="20"
+          >
+            {projects.map((project, i) => (
+              <Project
+                title={project.title}
+                image={project.image}
+                description={project.description}
+                key={i}
+              />
+            ))}
+          </SimpleGrid>
+        )}
       </Flex>
     </Layout>
   )
