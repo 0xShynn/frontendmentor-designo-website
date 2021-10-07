@@ -17,6 +17,11 @@ const GET_PAGE = gql`
               url
               height
             }
+            country
+            button {
+              url
+              label
+            }
           }
           ... on ContentHero {
             id

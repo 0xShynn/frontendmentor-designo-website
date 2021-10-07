@@ -5,9 +5,9 @@ import CustomImage from './utils/CustomImage'
 const Hero = ({ title, content, image, imageSide, theme }) => {
   return (
     <Flex
-      bg={theme.bg ?? 'red'}
+      bg={theme.bg ?? 'primary.peach'}
       rounded={{ base: 'none', md: '2xl' }}
-      mb={{ md: 28, xl: 36 }}
+      mb={{ base: theme.name === 'main' ? 0 : 28, md: 28, xl: 36 }}
       overflow="hidden"
       direction={{
         base: imageSide === 'right' ? 'column' : 'column-reverse',
@@ -43,14 +43,15 @@ const Hero = ({ title, content, image, imageSide, theme }) => {
 
       <Box
         flex="1"
-        py={{ base: 16, lg: 24, xl: 32 }}
+        py={{ base: 16, lg: 24, xl: theme.name === 'main' ? 32 : 40 }}
         px={{ base: 4, md: 16, lg: 16, xl: 20 }}
         textAlign={{ base: 'center', lg: 'left' }}
         color="white"
       >
         <Heading
-          as="h1"
-          variant="h1"
+          as={theme.name === 'main' ? 'h1' : 'h2'}
+          variant={theme.name === 'main' ? 'h1' : 'h2'}
+          letterSpacing="0"
           mb={{ base: 6, lg: 10 }}
           color={theme.title ?? 'red'}
         >
