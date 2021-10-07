@@ -27,12 +27,28 @@ const Project = ({ title, image, description }) => {
         flex="1"
         px={{ base: 6, md: 0 }}
         align="center"
+        transition="0.2s"
+        _hover={{
+          bg: 'primary.peach',
+          cursor: 'pointer',
+          '.title, .desc': {
+            color: 'white',
+          },
+        }}
       >
         <Box textAlign="center" py="8" maxW="280px" mx="auto">
-          <Heading as="h3" variant="h3" color="primary.peach" mb="4">
+          <Heading
+            as="h3"
+            variant="h3"
+            color="primary.peach"
+            mb="4"
+            className="title"
+          >
             {title}
           </Heading>
-          <Text color="primary.black">{description}</Text>
+          <Text color="primary.black" className="desc">
+            {description}
+          </Text>
         </Box>
       </Flex>
     </Flex>
