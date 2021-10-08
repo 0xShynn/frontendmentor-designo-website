@@ -4,7 +4,7 @@ const global = {
   body: {
     fontSize: '16px',
     fontFamily: 'body',
-    bg: 'white',
+    bg: 'primary.black',
   },
 }
 

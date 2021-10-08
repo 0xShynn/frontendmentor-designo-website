@@ -38,6 +38,7 @@ const Feature = ({ title, description, image, index }) => {
           textAlign={{ base: 'center', md: 'left', lg: 'center' }}
           ml={{ md: 12, lg: 0 }}
           flex="1"
+          color="primary.black"
         >
           <Heading as="h3" variant="h3" mb={{ base: 8, md: 4 }}>
             {title}

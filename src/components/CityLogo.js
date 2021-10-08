@@ -29,7 +29,7 @@ const CityLogo = ({ title, image, link, index }) => {
       )}
 
       <Flex align="center" direction="column">
-        <Heading as="h3" variant="h3" mb="8">
+        <Heading as="h3" variant="h3" mb="8" color="primary.black">
           {title}
         </Heading>
         <CustomLink href={link.url} variant="light" display="inline-flex">
