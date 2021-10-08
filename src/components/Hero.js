@@ -54,7 +54,7 @@ const Hero = ({ title, content, image, imageSide, theme }) => {
         }
         bgPos={
           theme.name === 'main'
-            ? { base: '-190px -130px', md: '135% 130%' }
+            ? { base: '-190px -130px', md: '135% 130%', lg: '0 100%' }
             : {
                 base: '0 bottom',
                 md: 'right 130%',
@@ -62,7 +62,11 @@ const Hero = ({ title, content, image, imageSide, theme }) => {
                 xl: '-300% bottom',
               }
         }
-        bgSize={theme.name === 'main' ? { base: '150%', md: '180%' } : null}
+        bgSize={
+          theme.name === 'main'
+            ? { base: '150%', md: '180%', lg: '200%' }
+            : null
+        }
         bgRepeat="no-repeat"
       >
         <Heading
