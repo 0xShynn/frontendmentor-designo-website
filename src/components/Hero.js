@@ -43,10 +43,18 @@ const Hero = ({ title, content, image, imageSide, theme }) => {
 
       <Box
         flex="1"
-        py={{ base: 16, lg: 24, xl: theme.name === 'main' ? 32 : 40 }}
+        py={{ base: 16, md: 20, lg: 24, xl: theme.name === 'main' ? 32 : 40 }}
         px={{ base: 4, md: 16, lg: 16, xl: 20 }}
         textAlign={{ base: 'center', lg: 'left' }}
         color="white"
+        bgImage="images/bg-pattern-three-circles.svg"
+        bgPos={{
+          base: '0 bottom',
+          md: 'right 130%',
+          lg: '-200% bottom',
+          xl: '-300% bottom',
+        }}
+        bgRepeat="no-repeat"
       >
         <Heading
           as={theme.name === 'main' ? 'h1' : 'h2'}
