@@ -1,8 +1,10 @@
-import { Flex, Heading } from '@chakra-ui/layout'
+import { Flex } from '@chakra-ui/layout'
+import { Stack } from '@chakra-ui/react'
 import { serialize } from 'next-mdx-remote/serialize'
 import { NextSeo } from 'next-seo'
 
 import Layout from '../components/Layout'
+import LocationItem from '../components/LocationItem'
 import { getLocationsPage } from '../lib/graphql/queries/pages/getLocationsPage'
 import getLayoutData from '../utils/getLayoutData'
 
@@ -32,8 +34,25 @@ const Locations = ({ data, page, offices }) => {
   return (
     <Layout data={data}>
       <NextSeo title="Locations" description="Description" />
-      <Flex bg="white" direction="column" align="center" justify="center">
-        <Heading>Locations</Heading>
+      <Flex
+        bg="white"
+        direction="column"
+        align="center"
+        justify="center"
+        maxW="1110px"
+        mx="auto"
+      >
+        <Stack spacing="10" w="full" mb="24">
+          {offices.map((office, i) => (
+            <LocationItem
+              title={office.country}
+              address={office.mdxAddress}
+              contact={office.mdxContact}
+              map={office.mapImage}
+              key={i}
+            />
+          ))}
+        </Stack>
       </Flex>
     </Layout>
   )
