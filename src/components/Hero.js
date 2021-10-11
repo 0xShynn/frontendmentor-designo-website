@@ -6,7 +6,7 @@ import CustomImage from './utils/CustomImage'
 const Hero = ({ title, content, mdxContent, image, imageSide, theme }) => {
   return (
     <Flex
-      bg={theme?.bg ? 'primary.peach' : 'red'}
+      bg={theme?.bg ?? 'primary.peach'}
       rounded={{ base: 'none', md: '2xl' }}
       mb={{ base: theme?.name === 'main' ? 0 : 28, md: 28, xl: 36 }}
       overflow="hidden"
