@@ -67,7 +67,12 @@ const LocationItem = ({ title, address, contact, map, index }) => {
           rounded={{ base: 'unset', md: '2xl' }}
           overflow="hidden"
         >
-          <NextImage src={map.url} layout="fill" objectFit="cover" />
+          <NextImage
+            src={map.url}
+            layout="fill"
+            objectFit="cover"
+            alt={map.altText}
+          />
         </Box>
       )}
     </Stack>
