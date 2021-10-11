@@ -1,20 +1,34 @@
 import { Flex, Heading } from '@chakra-ui/layout'
+import { serialize } from 'next-mdx-remote/serialize'
 import { NextSeo } from 'next-seo'
 
 import Layout from '../components/Layout'
+import { getLocationsPage } from '../lib/graphql/queries/pages/getLocationsPage'
 import getLayoutData from '../utils/getLayoutData'
 
 export const getStaticProps = async () => {
   const data = await getLayoutData()
+  const { page } = await getLocationsPage()
+
+  const offices = page?.content[0]?.blocks ?? []
+
+  for (const office of offices) {
+    const mdxAddress = await serialize(office.address)
+    const mdxContact = await serialize(office.contact)
+    office['mdxAddress'] = mdxAddress
+    office['mdxContact'] = mdxContact
+  }
 
   return {
     props: {
       data,
+      page,
+      offices,
     },
   }
 }
 
-const Locations = ({ data }) => {
+const Locations = ({ data, page, offices }) => {
   return (
     <Layout data={data}>
       <NextSeo title="Locations" description="Description" />
