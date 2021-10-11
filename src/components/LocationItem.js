@@ -80,7 +80,7 @@ const LocationItem = ({ title, address, contact, mapLocation, index }) => {
         >
           <ReactMapGL
             mapStyle="mapbox://styles/mapbox/streets-v9"
-            mapboxApiAccessToken={process.env.MAPBOX_DESIGNO_TOKEN}
+            mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_DESIGNO_TOKEN}
             onViewportChange={(viewport) => setViewport(viewport)}
             {...viewport}
           >
