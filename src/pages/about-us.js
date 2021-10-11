@@ -1,5 +1,6 @@
 import { Flex } from '@chakra-ui/layout'
 import { Stack } from '@chakra-ui/react'
+import { serialize } from 'next-mdx-remote/serialize'
 import { NextSeo } from 'next-seo'
 
 import CityLogo from '../components/CityLogo'
@@ -12,21 +13,26 @@ import getLayoutData from '../utils/getLayoutData'
 export const getStaticProps = async () => {
   const data = await getLayoutData()
   const page = await getPage({ slug: 'about-us' })
+  const contentHeroes =
+    page.content.find((item) => item.slug === 'content-heroes').blocks ?? []
+
+  for (const block of contentHeroes) {
+    const mdxContent = await serialize(block.content)
+    block['mdxContent'] = mdxContent
+  }
 
   return {
     props: {
       page,
       data,
+      contentHeroes,
     },
   }
 }
 
-const AboutUs = ({ data, page }) => {
+const AboutUs = ({ data, page, contentHeroes }) => {
   const topHero =
     page.content.find((item) => item.slug === 'about-us-hero').blocks[0] ?? {}
-
-  const contentHeroes =
-    page.content.find((item) => item.slug === 'content-heroes').blocks ?? []
 
   const officeLogos =
     page.content.find((item) => item.slug === 'office-logos').blocks ?? []
@@ -56,7 +62,7 @@ const AboutUs = ({ data, page }) => {
         {contentHeroes[0] && (
           <Hero
             title={contentHeroes[0].title}
-            content={contentHeroes[0].content}
+            mdxContent={contentHeroes[0].mdxContent}
             image={contentHeroes[0].image}
             imageSide="left"
             theme={themeContent}
@@ -85,7 +91,7 @@ const AboutUs = ({ data, page }) => {
         {contentHeroes[1] && (
           <Hero
             title={contentHeroes[1].title}
-            content={contentHeroes[1].content}
+            mdxContent={contentHeroes[1].mdxContent}
             image={contentHeroes[1].image}
             imageSide="right"
             theme={themeContent}

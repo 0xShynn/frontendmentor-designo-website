@@ -1,8 +1,9 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
+import { MDXRemote } from 'next-mdx-remote'
 
 import CustomImage from './utils/CustomImage'
 
-const Hero = ({ title, content, image, imageSide, theme }) => {
+const Hero = ({ title, content, mdxContent, image, imageSide, theme }) => {
   return (
     <Flex
       bg={theme.bg ?? 'primary.peach'}
@@ -14,17 +15,6 @@ const Hero = ({ title, content, image, imageSide, theme }) => {
         lg: 'row-reverse',
       }}
       w="full"
-      // bgImage={{
-      //   base: 'images/bg-pattern-hero-about-mobile.svg',
-      //   md: 'images/bg-pattern-hero.svg',
-      // }}
-      // bgPos={{
-      //   base: '-500px 200px',
-      //   sm: '-400px 200px',
-      //   md: '0 0',
-      // }}
-      // bgSize="cover"
-      // bgRepeat="no-repeat"
     >
       {image && imageSide === 'right' && (
         <CustomImage
@@ -78,7 +68,14 @@ const Hero = ({ title, content, image, imageSide, theme }) => {
         >
           {title}
         </Heading>
-        <Text color={theme.text}>{content}</Text>
+
+        {content && <Text color={theme.text}>{content}</Text>}
+
+        {mdxContent && (
+          <Box color={theme.text}>
+            <MDXRemote {...mdxContent} />
+          </Box>
+        )}
       </Box>
 
       {image && imageSide === 'left' && (
