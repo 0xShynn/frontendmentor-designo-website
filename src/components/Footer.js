@@ -38,7 +38,7 @@ const Footer = ({ data }) => {
                 <Heading as="h3" variant="h1" mb="6">
                   {banner.title}
                 </Heading>
-                <Text mb="6">{banner.subtitle}</Text>
+                <Text mb={{ base: 6, lg: 0 }}>{banner.subtitle}</Text>
               </Flex>
             )}
             {banner.button && (
