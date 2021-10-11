@@ -41,14 +41,21 @@ const Locations = ({ data, page, offices }) => {
         justify="center"
         maxW="1110px"
         mx="auto"
+        boxSizing="content-box"
+        px={{ base: 0, md: 8 }}
       >
-        <Stack spacing="10" w="full" mb="24">
+        <Stack
+          spacing={{ base: 8, md: 28, lg: 8 }}
+          w="full"
+          mb={{ base: 24, xl: 36 }}
+        >
           {offices.map((office, i) => (
             <LocationItem
               title={office.country}
               address={office.mdxAddress}
               contact={office.mdxContact}
               map={office.mapImage}
+              index={i}
               key={i}
             />
           ))}

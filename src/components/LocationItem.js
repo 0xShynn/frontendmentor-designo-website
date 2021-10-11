@@ -2,12 +2,14 @@ import { Box, Flex, Heading, Stack } from '@chakra-ui/react'
 import { MDXRemote } from 'next-mdx-remote'
 import NextImage from 'next/image'
 
-const LocationItem = ({ title, address, contact, map }) => {
+const LocationItem = ({ title, address, contact, map, index }) => {
   return (
     <Stack
-      direction={{ base: 'column-reverse' }}
+      direction={{
+        base: 'column-reverse',
+        lg: index % 2 === 0 ? 'row' : 'row-reverse',
+      }}
       spacing={{ base: 0, md: 8 }}
-      px={{ md: 8 }}
     >
       <Flex
         bg="secondary.verylightpeach"
@@ -40,7 +42,7 @@ const LocationItem = ({ title, address, contact, map }) => {
         {(address || contact) && (
           <Stack
             direction={{ base: 'column', md: 'row' }}
-            spacing={{ base: 8, md: 28 }}
+            spacing={{ base: 8, md: 28, lg: 20, xl: 28 }}
           >
             {address && (
               <Box color="primary.black">
@@ -60,18 +62,12 @@ const LocationItem = ({ title, address, contact, map }) => {
       {map && (
         <Box
           pos="relative"
-          w={{ base: 'full' }}
-          h="326px"
+          w={{ base: 'full', lg: '350px' }}
+          h={{ base: '326px', lg: 'auto' }}
           rounded={{ base: 'unset', md: '2xl' }}
           overflow="hidden"
         >
-          <NextImage
-            src={map.url}
-            layout="fill"
-            objectFit="cover"
-            width={map.width}
-            height={map.height}
-          />
+          <NextImage src={map.url} layout="fill" objectFit="cover" />
         </Box>
       )}
     </Stack>
