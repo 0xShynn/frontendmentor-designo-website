@@ -24,13 +24,12 @@ export const getStaticProps = async () => {
   return {
     props: {
       data,
-      page,
       offices,
     },
   }
 }
 
-const Locations = ({ data, page, offices }) => {
+const Locations = ({ data, offices }) => {
   return (
     <Layout data={data}>
       <NextSeo title="Locations" description="Description" />
@@ -55,6 +54,7 @@ const Locations = ({ data, page, offices }) => {
               address={office.mdxAddress}
               contact={office.mdxContact}
               map={office.mapImage}
+              mapLocation={office.mapLocation}
               index={i}
               key={i}
             />

@@ -1,8 +1,19 @@
-import { Box, Flex, Heading, Stack } from '@chakra-ui/react'
-import { MDXRemote } from 'next-mdx-remote'
-import NextImage from 'next/image'
+import { useState } from 'react'
 
-const LocationItem = ({ title, address, contact, map, index }) => {
+import { Box, Flex, Heading, Icon, Stack } from '@chakra-ui/react'
+import { MDXRemote } from 'next-mdx-remote'
+import { HiLocationMarker } from 'react-icons/hi'
+import ReactMapGL, { Marker } from 'react-map-gl'
+
+const LocationItem = ({ title, address, contact, mapLocation, index }) => {
+  const [viewport, setViewport] = useState({
+    latitude: mapLocation.latitude,
+    longitude: mapLocation.longitude,
+    width: '100%',
+    height: '100%',
+    zoom: 13,
+  })
+
   return (
     <Stack
       direction={{
@@ -59,20 +70,31 @@ const LocationItem = ({ title, address, contact, map, index }) => {
         )}
       </Flex>
 
-      {map && (
+      {mapLocation && (
         <Box
           pos="relative"
+          overflow="hidden"
+          rounded={{ base: 'unset', md: '2xl' }}
           w={{ base: 'full', lg: '350px' }}
           h={{ base: '326px', lg: 'auto' }}
-          rounded={{ base: 'unset', md: '2xl' }}
-          overflow="hidden"
         >
-          <NextImage
-            src={map.url}
-            layout="fill"
-            objectFit="cover"
-            alt={map.altText}
-          />
+          <ReactMapGL
+            mapStyle="mapbox://styles/mapbox/streets-v9"
+            mapboxApiAccessToken={process.env.MAPBOX_API_ACCESS_TOKEN}
+            onViewportChange={(viewport) => setViewport(viewport)}
+            {...viewport}
+          >
+            <Marker
+              latitude={mapLocation.latitude}
+              longitude={mapLocation.longitude}
+            >
+              <Icon
+                as={HiLocationMarker}
+                boxSize="36px"
+                color="primary.peach"
+              />
+            </Marker>
+          </ReactMapGL>
         </Box>
       )}
     </Stack>
