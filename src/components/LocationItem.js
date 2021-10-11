@@ -31,7 +31,7 @@ const LocationItem = ({ title, address, contact, map, index }) => {
         {title && (
           <Heading
             as="h2"
-            variant="h1"
+            variant={{ base: 'h1', lg: 'h2' }}
             letterSpacing="0"
             mb={{ base: 6, lg: 8 }}
             color="primary.peach"
