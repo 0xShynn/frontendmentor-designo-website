@@ -46,6 +46,7 @@ const Locations = ({ data, offices }) => {
               contact={office.mdxContact}
               map={office.mapImage}
               mapLocation={office.mapLocation}
+              slug={office.slug}
               index={i}
               key={i}
             />

@@ -5,7 +5,14 @@ import { MDXRemote } from 'next-mdx-remote'
 import { HiLocationMarker } from 'react-icons/hi'
 import ReactMapGL, { Marker } from 'react-map-gl'
 
-const LocationItem = ({ title, address, contact, mapLocation, index }) => {
+const LocationItem = ({
+  title,
+  address,
+  contact,
+  mapLocation,
+  slug,
+  index,
+}) => {
   const [viewport, setViewport] = useState({
     latitude: mapLocation.latitude,
     longitude: mapLocation.longitude,
@@ -21,6 +28,7 @@ const LocationItem = ({ title, address, contact, mapLocation, index }) => {
         lg: index % 2 === 0 ? 'row' : 'row-reverse',
       }}
       spacing={{ base: 0, md: 8 }}
+      id={slug}
     >
       <Flex
         bg="secondary.verylightpeach"

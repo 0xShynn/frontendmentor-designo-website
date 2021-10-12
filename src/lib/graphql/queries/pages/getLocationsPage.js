@@ -23,6 +23,7 @@ const GET_LOCATIONS_PAGE = gql`
               width
               url
             }
+            slug
           }
         }
       }
