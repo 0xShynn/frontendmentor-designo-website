@@ -22,6 +22,7 @@ const CustomInput = (props) => {
     id,
     placeholder,
     _placeholder: { color: 'white', opacity: '0.6', fontWeight: '400' },
+    _focus: { borderBottomWidth: '2px' },
     color: 'white',
     px: 2,
     fontSize: 'md',

@@ -96,6 +96,8 @@ const ContactForm = () => {
         />
 
         <Button
+          px="12"
+          py="7"
           variant="dark"
           type="submit"
           display="flex"
