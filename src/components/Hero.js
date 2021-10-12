@@ -31,6 +31,7 @@ const Hero = (props) => {
           h={{ base: '320px', lg: 'auto' }}
           overflow="hidden"
           pos="relative"
+          alt={image.altText}
         />
       ) : (
         <Box>{children}</Box>
@@ -104,6 +105,7 @@ const Hero = (props) => {
           h={{ base: '320px', lg: 'auto' }}
           overflow="hidden"
           pos="relative"
+          alt={image.altText}
         />
       )}
     </Flex>

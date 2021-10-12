@@ -30,6 +30,7 @@ const GET_PAGE = gql`
               url
               width
               height
+              altText
             }
             content
           }
