@@ -59,6 +59,7 @@ const Header = ({ data }) => {
         align="center"
         py={{ base: 6, md: 16 }}
         px={{ base: 6, md: 8, xl: 0 }}
+        role="banner"
       >
         <CustomLink href="/">
           <CustomImage
@@ -75,6 +76,7 @@ const Header = ({ data }) => {
           spacing="8"
           display={{ base: 'none', md: 'flex' }}
           role="navigation"
+          aria-label="Main navigation"
         >
           <NavLinks data={navLinks} linksColor="dark" />
         </HStack>

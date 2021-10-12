@@ -5,7 +5,13 @@ import Tile from './Tile'
 const ProjectTilesContainer = ({ data }) => {
   const tilesCount = data.length
   return (
-    <Box w="full" mb="28" px={{ base: 6, md: 0 }}>
+    <Box
+      w="full"
+      mb="28"
+      px={{ base: 6, md: 0 }}
+      role="region"
+      aria-label="projects container"
+    >
       <Grid
         gap={6}
         templateColumns="repeat(2, 1fr)"

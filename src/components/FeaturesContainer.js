@@ -11,6 +11,7 @@ const FeaturesContainer = ({ data }) => {
       direction={{ base: 'column', lg: 'row' }}
       spacing={{ base: 20, md: 8 }}
       mb="32"
+      role="complementary"
     >
       {data.map((feature, i) => (
         <Feature

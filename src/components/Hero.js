@@ -18,6 +18,8 @@ const Hero = (props) => {
         lg: 'row-reverse',
       }}
       w="full"
+      role="region"
+      aria-label={title}
     >
       {image && imageSide === 'right' && !children ? (
         <CustomImage
@@ -31,6 +33,7 @@ const Hero = (props) => {
           h={{ base: '320px', lg: 'auto' }}
           overflow="hidden"
           pos="relative"
+          alt={image.altText}
         />
       ) : (
         <Box>{children}</Box>
@@ -104,6 +107,7 @@ const Hero = (props) => {
           h={{ base: '320px', lg: 'auto' }}
           overflow="hidden"
           pos="relative"
+          alt={image.altText}
         />
       )}
     </Flex>

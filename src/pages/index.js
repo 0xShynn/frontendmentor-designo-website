@@ -40,6 +40,7 @@ export default function Home({ data, page }) {
         mx="auto"
         px={{ base: 0, md: 8 }}
         boxSizing="content-box"
+        role="main"
       >
         {homeHeroBlocks && <HeroMain data={homeHeroBlocks} />}
         {homeProjectsTile && <ProjectTilesContainer data={homeProjectsTile} />}
