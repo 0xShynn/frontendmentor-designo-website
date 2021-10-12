@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import OfficeLogosContainer from '../components/OfficeLogosContainer'
 import PageContainer from '../components/PageContainer'
 import { themeMain } from '../constants/heroTheme'
+import PageSlugContext from '../contexts/PageSlugContext'
 import { getContactPage } from '../lib/graphql/queries/pages/getContactPage'
 import getLayoutData from '../utils/getLayoutData'
 
@@ -22,6 +23,7 @@ export const getStaticProps = async () => {
 }
 
 const Contact = ({ data, page }) => {
+  const pageSlug = page?.slug
   const officeLogos =
     page?.content?.find((item) => item.slug === 'office-logos')?.blocks ?? null
   const contactHero =
@@ -29,25 +31,27 @@ const Contact = ({ data, page }) => {
     null
 
   return (
-    <Layout data={data}>
-      <NextSeo title="Contact Us" description="Description" />
-      <PageContainer>
-        {contactHero && (
-          <Hero
-            title={contactHero.title}
-            content={contactHero.description}
-            theme={themeMain}
-            pb={{ base: 8 }}
-          >
-            <ContactForm />
-          </Hero>
-        )}
+    <PageSlugContext.Provider value={pageSlug}>
+      <Layout data={data}>
+        <NextSeo title="Contact Us" description="Description" />
+        <PageContainer>
+          {contactHero && (
+            <Hero
+              title={contactHero.title}
+              content={contactHero.description}
+              theme={themeMain}
+              pb={{ base: 8 }}
+            >
+              <ContactForm />
+            </Hero>
+          )}
 
-        {officeLogos && (
-          <OfficeLogosContainer data={officeLogos} pt={{ base: 28, md: 0 }} />
-        )}
-      </PageContainer>
-    </Layout>
+          {officeLogos && (
+            <OfficeLogosContainer data={officeLogos} pt={{ base: 28, md: 0 }} />
+          )}
+        </PageContainer>
+      </Layout>
+    </PageSlugContext.Provider>
   )
 }
 

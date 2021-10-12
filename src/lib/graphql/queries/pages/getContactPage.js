@@ -31,6 +31,8 @@ const GET_CONTACT_PAGE = gql`
         title
         slug
       }
+      slug
+      title
     }
   }
 `
