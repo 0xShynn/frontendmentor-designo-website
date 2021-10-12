@@ -30,60 +30,42 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![https://www.dropbox.com/s/t9x0sflzztv87ob/fm-designo-website.jpg?raw=1](https://www.dropbox.com/s/t9x0sflzztv87ob/fm-designo-website.jpg?raw=1)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/anhek/frontendmentor-designo-website](https://github.com/anhek/frontendmentor-designo-website)
+- Live Site URL: [https://anhek-designo.vercel.app](https://anhek-designo.vercel.app)
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [Next.js](https://nextjs.org) - React framework
+- [Vercel](https://vercel.com/) - Cloud platform for serverless deployment
+- [GraphCMS](http://graphcms.com) - Headless CMS
+- [React Hook Form](http://react-hook-form.com) - Forms
+- [Mapbox](https://www.mapbox.com) - Maps
+- [Chakra UI](https://chakra-ui.com) - For styles
+- [Sizzy](https://sizzy.co/) - For the responsive web design
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+My main goal was to use this project as an opportunity to keep building projects with the jamstack approach. I used the combo Next.js, GraphCMS and Chakra UI. I'm more confident using those tools as I've learned many things (through practice, trials and documentation).
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+Next topics that I'll dig into (and integrate) : TypeScript and React animation.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Using Mapbox with Next.js (Instead of Google Maps)](https://leerob.io/blog/using-mapbox-with-next-js) - This helped me implementing the office locations maps (I used mapbox instead of Leaflet)
+- [background-blend-mode on css-tricks](https://css-tricks.com/almanac/properties/b/background-blend-mode/) - This article helps to visualize the different background blend mode options available
 
 ## Author
 
 - Website - [Antonin Nhek](https://anhek.dev)
+- Twitter - [@anhek\_](http://twitter.com/anhek_)
 - Frontend Mentor - [@anhek](https://www.frontendmentor.io/profile/anhek)

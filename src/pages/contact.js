@@ -33,7 +33,10 @@ const Contact = ({ data, page }) => {
   return (
     <PageSlugContext.Provider value={pageSlug}>
       <Layout data={data}>
-        <NextSeo title="Contact Us" description="Description" />
+        <NextSeo
+          title="Contact Us"
+          description="Ready to take it to the next level? Let’s talk about your project or idea and find out how we can help your business grow."
+        />
         <PageContainer>
           {contactHero && (
             <Hero

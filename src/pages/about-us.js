@@ -38,7 +38,10 @@ const AboutUs = ({ data, page, contentHeroes }) => {
 
   return (
     <Layout data={data}>
-      <NextSeo title="About Us" description="Description" />
+      <NextSeo
+        title="About Us"
+        description="Founded in 2010, we are a creative agency that produces lasting results for our clients. We’ve partnered with many startups, corporations, and nonprofits alike to craft designs that make real impact."
+      />
       <PageContainer>
         {topHero && (
           <Hero

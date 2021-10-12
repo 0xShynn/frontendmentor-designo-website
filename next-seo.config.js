@@ -11,7 +11,7 @@ const defaultDescription =
 // Edit the SEO parameters
 export const SEO = {
   defaultTitle: defaultTitle,
-  titleTemplate: `${defaultTitle} | %s`,
+  titleTemplate: `%s | ${defaultTitle}`,
   canonical: canonicalUrl,
   additionalLinkTags: [
     {
@@ -63,7 +63,7 @@ export const SEO = {
     images: [
       {
         // Add your custom image for sharing
-        url: 'https://via.placeholder.com/1200x630',
+        url: 'https://www.dropbox.com/s/c8enlakwys11l0b/designo-ogimage.jpg?raw=1',
         width: 1200,
         height: 630,
         alt: 'Preview of the website',
@@ -72,8 +72,6 @@ export const SEO = {
   },
   // Edit the twitter info or delete
   twitter: {
-    handle: '@handle',
-    site: '@site',
     cardType: 'summary_large_image',
   },
 }
