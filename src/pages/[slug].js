@@ -19,7 +19,7 @@ const ProjectsPage = ({ data, page }) => {
 
   return (
     <Layout data={data}>
-      <NextSeo title="Home" description="Description" />
+      <NextSeo title={title} description={description} />
       <Flex
         direction="column"
         align="center"

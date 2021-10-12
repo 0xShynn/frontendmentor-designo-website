@@ -32,7 +32,7 @@ export const getStaticProps = async () => {
 const Locations = ({ data, offices }) => {
   return (
     <Layout data={data}>
-      <NextSeo title="Locations" description="Description" />
+      <NextSeo title="Locations" description="Designo office locations" />
       <PageContainer>
         <Stack
           spacing={{ base: 8, md: 28, lg: 8 }}
