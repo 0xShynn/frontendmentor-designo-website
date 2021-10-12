@@ -1,6 +1,6 @@
-import { Box } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 
+import ContactForm from '../components/ContactForm'
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
 import OfficeLogosContainer from '../components/OfficeLogosContainer'
@@ -23,25 +23,28 @@ export const getStaticProps = async () => {
 
 const Contact = ({ data, page }) => {
   const officeLogos =
-    page?.content?.find((item) => item.slug === 'office-logos')?.blocks ?? []
+    page?.content?.find((item) => item.slug === 'office-logos')?.blocks ?? null
   const contactHero =
-    page?.content?.find((item) => item.slug === 'contact-hero')?.blocks[0] ?? {}
+    page?.content?.find((item) => item.slug === 'contact-hero')?.blocks[0] ??
+    null
 
   return (
     <Layout data={data}>
       <NextSeo title="Contact Us" description="Description" />
       <PageContainer>
-        <Hero
-          title={contactHero.title}
-          content={contactHero.description}
-          theme={themeMain}
-        >
-          <Box maxW="540px" w="full" bg="red.100">
-            HEl
-          </Box>
-        </Hero>
+        {contactHero && (
+          <Hero
+            title={contactHero.title}
+            content={contactHero.description}
+            theme={themeMain}
+          >
+            <ContactForm />
+          </Hero>
+        )}
 
-        {officeLogos && <OfficeLogosContainer data={officeLogos} />}
+        {officeLogos && (
+          <OfficeLogosContainer data={officeLogos} pt={{ base: 28, md: 0 }} />
+        )}
       </PageContainer>
     </Layout>
   )
