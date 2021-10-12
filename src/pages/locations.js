@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo'
 
 import Layout from '../components/Layout'
 import LocationItem from '../components/LocationItem'
+import PageContainer from '../components/PageContainer'
 import { getLocationsPage } from '../lib/graphql/queries/pages/getLocationsPage'
 import getLayoutData from '../utils/getLayoutData'
 
@@ -33,16 +34,7 @@ const Locations = ({ data, offices }) => {
   return (
     <Layout data={data}>
       <NextSeo title="Locations" description="Description" />
-      <Flex
-        bg="white"
-        direction="column"
-        align="center"
-        justify="center"
-        maxW="1110px"
-        mx="auto"
-        boxSizing="content-box"
-        px={{ base: 0, md: 8 }}
-      >
+      <PageContainer>
         <Stack
           spacing={{ base: 8, md: 28, lg: 8 }}
           w="full"
@@ -60,7 +52,7 @@ const Locations = ({ data, offices }) => {
             />
           ))}
         </Stack>
-      </Flex>
+      </PageContainer>
     </Layout>
   )
 }

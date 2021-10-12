@@ -1,11 +1,11 @@
 import { Flex } from '@chakra-ui/layout'
-import { Stack } from '@chakra-ui/react'
 import { serialize } from 'next-mdx-remote/serialize'
 import { NextSeo } from 'next-seo'
 
-import CityLogo from '../components/CityLogo'
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
+import OfficeLogosContainer from '../components/OfficeLogosContainer'
+import PageContainer from '../components/PageContainer'
 import { themeContent, themeMain } from '../constants/heroTheme'
 import { getPage } from '../lib/graphql/queries/pages/getPage'
 import getLayoutData from '../utils/getLayoutData'
@@ -40,15 +40,7 @@ const AboutUs = ({ data, page, contentHeroes }) => {
   return (
     <Layout data={data}>
       <NextSeo title="About Us" description="Description" />
-      <Flex
-        bg="white"
-        direction="column"
-        align="center"
-        justify="center"
-        maxW="1110px"
-        mx="auto"
-        px={{ base: 0, md: 8, xl: 0 }}
-      >
+      <PageContainer>
         {topHero && (
           <Hero
             title={topHero.title}
@@ -69,24 +61,7 @@ const AboutUs = ({ data, page, contentHeroes }) => {
           />
         )}
 
-        {officeLogos && (
-          <Stack
-            direction={{ base: 'column', lg: 'row' }}
-            spacing={{ base: 16, md: 20, lg: 28, xl: 40 }}
-            pt={{ base: 0, md: 0 }}
-            pb={{ base: 28, xl: 36 }}
-          >
-            {officeLogos.map((logo, i) => (
-              <CityLogo
-                key={i}
-                title={logo.country}
-                image={logo.image}
-                link={logo.button}
-                index={i}
-              />
-            ))}
-          </Stack>
-        )}
+        {officeLogos && <OfficeLogosContainer data={officeLogos} />}
 
         {contentHeroes[1] && (
           <Hero
@@ -97,7 +72,7 @@ const AboutUs = ({ data, page, contentHeroes }) => {
             theme={themeContent}
           />
         )}
-      </Flex>
+      </PageContainer>
     </Layout>
   )
 }
