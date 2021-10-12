@@ -10,6 +10,7 @@ const PageContainer = ({ children }) => {
       maxW="1110px"
       mx="auto"
       px={{ base: 0, md: 8, xl: 0 }}
+      role="main"
     >
       {children}
     </Flex>

@@ -28,6 +28,8 @@ const HeroMain = ({ data }) => {
       }}
       bgRepeat="no-repeat"
       align="center"
+      role="region"
+      aria-label="main hero"
     >
       <Box
         maxW={{ base: '540px', lg: '440px', xl: '540px' }}

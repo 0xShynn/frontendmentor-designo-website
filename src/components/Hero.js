@@ -18,6 +18,8 @@ const Hero = (props) => {
         lg: 'row-reverse',
       }}
       w="full"
+      role="region"
+      aria-label={title}
     >
       {image && imageSide === 'right' && !children ? (
         <CustomImage
