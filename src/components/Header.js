@@ -75,6 +75,7 @@ const Header = ({ data }) => {
           spacing="8"
           display={{ base: 'none', md: 'flex' }}
           role="navigation"
+          aria-label="Main navigatioon"
         >
           <NavLinks data={navLinks} linksColor="dark" />
         </HStack>

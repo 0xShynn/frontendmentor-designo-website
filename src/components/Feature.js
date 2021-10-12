@@ -24,15 +24,18 @@ const Feature = ({ title, description, image, index }) => {
             top="0"
             left="0"
             zIndex="overlay"
+            alt={image.altText}
           />
           <CustomImage
             image="/images/bg-pattern-hero-home.svg"
             width="202px"
             height="202px"
             transform={`rotate(${rotateBackgroundImage(index)})`}
+            alt=""
           />
         </Box>
       )}
+
       {(title || description) && (
         <Box
           textAlign={{ base: 'center', md: 'left', lg: 'center' }}

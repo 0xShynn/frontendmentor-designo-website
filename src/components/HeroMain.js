@@ -79,6 +79,7 @@ const HeroMain = ({ data }) => {
             image={image.url}
             width={image.width}
             height={image.height}
+            alt={image.altText}
           />
         </Flex>
       )}

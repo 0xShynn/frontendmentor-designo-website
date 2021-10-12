@@ -135,6 +135,7 @@ const Footer = ({ data }) => {
                 color="primary.peach"
                 display="inline-block"
                 _hover={{ color: 'secondary.lightpeach' }}
+                aria-label={`${item.title} logo`}
               >
                 <Icon boxSize="24px">{renderSocialIcons(item.socialLink)}</Icon>
               </Link>
