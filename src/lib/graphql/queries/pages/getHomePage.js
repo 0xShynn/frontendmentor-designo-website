@@ -36,11 +36,16 @@ const GET_HOME_PAGE = gql`
           ... on ProjectsTile {
             id
             title
+            button {
+              label
+              url
+            }
             imageBackground {
               height
               altText
               url
               width
+              imageSize
             }
           }
         }

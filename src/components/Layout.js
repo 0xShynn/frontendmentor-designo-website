@@ -6,7 +6,7 @@ import Header from './Header'
 const Layout = ({ children, data }) => {
   return (
     <Box>
-      <Box role="main">
+      <Box role="main" bg="white">
         <Header data={data.header} />
         {children}
       </Box>

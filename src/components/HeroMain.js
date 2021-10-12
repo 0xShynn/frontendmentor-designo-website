@@ -1,6 +1,8 @@
-import { Box, Flex, Heading, Link, Text } from '@chakra-ui/layout'
+import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
 
 import CustomImage from '../components/utils/CustomImage'
+
+import CustomLink from './utils/CustomLink'
 
 const HeroMain = ({ data }) => {
   const { title, description, button, image } = data
@@ -9,9 +11,9 @@ const HeroMain = ({ data }) => {
     <Flex
       bg="primary.peach"
       direction={{ base: 'column', lg: 'row' }}
-      px={{ base: 6, lg: 20, xl: 24 }}
+      px={{ base: 6, md: 8, lg: 20, xl: 24 }}
       py={{ base: 16, md: 16, lg: 28, xl: 36 }}
-      mb={{ base: 0, md: 24 }}
+      mb="28"
       rounded={{ base: 'none', md: '2xl' }}
       w="full"
       h={{ base: '843px', lg: 'auto' }}
@@ -29,8 +31,8 @@ const HeroMain = ({ data }) => {
     >
       <Box
         maxW={{ base: '540px', lg: '440px', xl: '540px' }}
-        w="max-content"
         textAlign={{ base: 'center', lg: 'left' }}
+        w={{ base: 'full', lg: 'max-content' }}
         mx="auto"
       >
         {title && (
@@ -51,14 +53,15 @@ const HeroMain = ({ data }) => {
         )}
 
         {button && (
-          <Link
+          <CustomLink
+            href="/"
             textTransform="uppercase"
             variant="dark"
             display="inline-block"
             mb={{ base: 12, lg: 0 }}
           >
             {button.label}
-          </Link>
+          </CustomLink>
         )}
       </Box>
 

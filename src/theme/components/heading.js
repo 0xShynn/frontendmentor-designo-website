@@ -10,8 +10,8 @@ const heading = {
       lineHeight: ['36px', '36px', '48px'],
     },
     h2: {
-      fontSize: '40px',
-      lineHeight: '48px',
+      fontSize: ['28px', '28px', '40px'],
+      lineHeight: ['36px', '36px', '48px'],
       letterSpacing: '2px',
     },
     h3: {

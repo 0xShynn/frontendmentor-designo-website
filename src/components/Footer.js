@@ -1,9 +1,14 @@
+import { useContext } from 'react'
+
 import Icon from '@chakra-ui/icon'
 import { Box, Divider, Flex, Link, Stack, HStack } from '@chakra-ui/layout'
+import { Heading, Text } from '@chakra-ui/react'
 import { MDXRemote } from 'next-mdx-remote'
 
+import PageSlugContext from '../contexts/PageSlugContext'
 import renderSocialIcons from '../utils/renderSocialIcons'
 
+import Banner from './Banner'
 import NavLinks from './NavLinks'
 import CustomImage from './utils/CustomImage'
 import CustomLink from './utils/CustomLink'
@@ -13,13 +18,53 @@ const Footer = ({ data }) => {
   const logo = data?.logo ?? {}
   const navLinks = data?.navigation?.pages ?? []
   const socialLinks = data?.socialMedias ?? []
+  const banner = data?.banner ?? {}
+
+  const pageSlug = useContext(PageSlugContext)
 
   return (
     <Box w="full" bg="primary.black" role="contentinfo">
+      <Box bg="white" pos="relative">
+        <Box w="full" h="50%" bg="primary.black" pos="absolute" bottom="0" />
+        {banner && pageSlug !== 'contact' && (
+          <Banner>
+            <Flex
+              maxW={{ base: '435px', lg: 'unset' }}
+              mx="auto"
+              direction={{ base: 'column', lg: 'row' }}
+              justify="space-between"
+              align="center"
+            >
+              {(banner.title || banner.subtitle) && (
+                <Flex
+                  direction="column"
+                  textAlign={{ base: 'center', lg: 'left' }}
+                  maxW={{ base: 'full', lg: '460px' }}
+                >
+                  <Heading as="h3" variant="h1" mb="6">
+                    {banner.title}
+                  </Heading>
+                  <Text mb={{ base: 6, lg: 0 }}>{banner.subtitle}</Text>
+                </Flex>
+              )}
+              {banner.button && (
+                <CustomLink
+                  href={banner.button.url}
+                  variant="dark"
+                  display="inline-flex"
+                >
+                  {banner.button.label}
+                </CustomLink>
+              )}
+            </Flex>
+          </Banner>
+        )}
+      </Box>
+
       <Flex
         direction={{ base: 'column' }}
         align="center"
-        px="6"
+        px={{ base: 6, md: 8, xl: 0 }}
         py={{ base: 16, md: 20 }}
         maxW="1110px"
         mx="auto"

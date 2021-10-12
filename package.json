@@ -11,10 +11,12 @@
     "pre-commit": "next lint --fix && git add -A ."
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.15",
     "@chakra-ui/react": "^1.6.7",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@fontsource/jost": "^4.5.0",
+    "@hookform/resolvers": "^2.8.2",
     "framer-motion": "^4",
     "graphql": "^15.6.0",
     "graphql-request": "^3.5.0",
@@ -23,7 +25,10 @@
     "next-mdx-remote": "^3.0.5",
     "next-seo": "^4.26.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.17.2",
+    "react-map-gl": "^6.1.17",
+    "yup": "^0.32.10"
   },
   "devDependencies": {
     "eslint": "7.32.0",
@@ -34,6 +39,7 @@
     "lint-staged": ">=10",
     "prettier": "^2.3.2",
     "prop-types": "^15.7.2",
+    "react-icons": "^4.3.1",
     "typescript": "^4.3.5"
   },
   "lint-staged": {
