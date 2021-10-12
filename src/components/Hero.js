@@ -3,7 +3,10 @@ import { MDXRemote } from 'next-mdx-remote'
 
 import CustomImage from './utils/CustomImage'
 
-const Hero = ({ title, content, mdxContent, image, imageSide, theme }) => {
+const Hero = (props) => {
+  const { title, content, mdxContent, image, imageSide, theme, children } =
+    props
+
   return (
     <Flex
       bg={theme?.bg ?? 'primary.peach'}
@@ -16,7 +19,7 @@ const Hero = ({ title, content, mdxContent, image, imageSide, theme }) => {
       }}
       w="full"
     >
-      {image && imageSide === 'right' && (
+      {image && imageSide === 'right' && !children ? (
         <CustomImage
           // attributes for the NextImage element
           image={image.url}
@@ -29,6 +32,8 @@ const Hero = ({ title, content, mdxContent, image, imageSide, theme }) => {
           overflow="hidden"
           pos="relative"
         />
+      ) : (
+        <Box>{children}</Box>
       )}
 
       <Box

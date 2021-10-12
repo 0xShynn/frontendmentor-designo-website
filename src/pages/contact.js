@@ -1,4 +1,3 @@
-import { Flex } from '@chakra-ui/layout'
 import { Box } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 
@@ -23,17 +22,18 @@ export const getStaticProps = async () => {
 }
 
 const Contact = ({ data, page }) => {
-  console.log(page)
   const officeLogos =
-    page.content.find((item) => item.slug === 'office-logos').blocks ?? []
+    page?.content?.find((item) => item.slug === 'office-logos')?.blocks ?? []
+  const contactHero =
+    page?.content?.find((item) => item.slug === 'contact-hero')?.blocks[0] ?? {}
 
   return (
     <Layout data={data}>
       <NextSeo title="Contact Us" description="Description" />
       <PageContainer>
         <Hero
-          title="Contact Us"
-          content="Ready to take it to the next level? Let’s talk about your project or idea and find out how we can help your business grow. If you are looking for unique digital experiences that’s relatable to your users, drop us a line."
+          title={contactHero.title}
+          content={contactHero.description}
           theme={themeMain}
         >
           <Box maxW="540px" w="full" bg="red.100">

@@ -22,6 +22,11 @@ const GET_CONTACT_PAGE = gql`
               height
             }
           }
+          ... on Hero {
+            id
+            title
+            description
+          }
         }
         title
         slug
