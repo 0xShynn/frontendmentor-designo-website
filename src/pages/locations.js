@@ -1,4 +1,3 @@
-import { Flex } from '@chakra-ui/layout'
 import { Stack } from '@chakra-ui/react'
 import { serialize } from 'next-mdx-remote/serialize'
 import { NextSeo } from 'next-seo'

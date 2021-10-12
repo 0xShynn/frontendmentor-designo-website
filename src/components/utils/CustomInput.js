@@ -1,3 +1,4 @@
+import { WarningIcon } from '@chakra-ui/icons'
 import {
   Flex,
   FormControl,
@@ -13,7 +14,6 @@ const CustomInput = (props) => {
     errorName,
     errorMessage,
     register,
-    showErrorMessage,
     isTextArea,
     ...otherProps
   } = props
@@ -41,9 +41,19 @@ const CustomInput = (props) => {
           <Textarea {...sharedProperties} />
         )}
 
-        {showErrorMessage && (
-          <FormErrorMessage fontSize="11px" pos="absolute" bottom="-22px">
-            {errorName && errorMessage}
+        {errorMessage && (
+          <FormErrorMessage
+            fontSize="12px"
+            color="white"
+            pb="2"
+            right={{ md: 0 }}
+            left={{ base: '6px', md: 'unset' }}
+            bottom={{ base: '-32px', md: '2px' }}
+            pos="absolute"
+            fontStyle="italic"
+          >
+            Can&apos;t be empty
+            <WarningIcon w={4} h={4} color="white" ml="2" />
           </FormErrorMessage>
         )}
       </Flex>

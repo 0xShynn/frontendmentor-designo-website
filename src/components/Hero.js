@@ -4,7 +4,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import CustomImage from './utils/CustomImage'
 
 const Hero = (props) => {
-  const { title, content, mdxContent, image, imageSide, theme, children } =
+  const { title, content, mdxContent, image, imageSide, theme, children, pb } =
     props
 
   return (
@@ -36,9 +36,18 @@ const Hero = (props) => {
         <Box>{children}</Box>
       )}
 
-      <Box
+      <Flex
         flex="1"
-        py={{ base: 20, md: 20, lg: 24, xl: theme?.name === 'main' ? 32 : 40 }}
+        direction="column"
+        justify="center"
+        py={{ base: 20, lg: 24, xl: theme?.name === 'main' ? 32 : 40 }}
+        pb={
+          pb || {
+            base: 20,
+            lg: 24,
+            xl: theme?.name === 'main' ? 32 : 40,
+          }
+        }
         px={{ base: 4, md: 16, lg: 16, xl: 20 }}
         textAlign={{ base: 'center', lg: 'left' }}
         color="white"
@@ -81,7 +90,7 @@ const Hero = (props) => {
             <MDXRemote {...mdxContent} />
           </Box>
         )}
-      </Box>
+      </Flex>
 
       {image && imageSide === 'left' && (
         <CustomImage

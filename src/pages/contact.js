@@ -37,6 +37,7 @@ const Contact = ({ data, page }) => {
             title={contactHero.title}
             content={contactHero.description}
             theme={themeMain}
+            pb={{ base: 8 }}
           >
             <ContactForm />
           </Hero>

@@ -1,7 +1,16 @@
 import { Button, Flex } from '@chakra-ui/react'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
 
 import CustomInput from './utils/CustomInput'
+
+const schema = yup.object().shape({
+  name: yup.string().required('A name is required'),
+  email: yup.string().email().required('An email is required'),
+  phone: yup.string().required('A phone number is required'),
+  message: yup.string().required('A message is required'),
+})
 
 const ContactForm = () => {
   const {
@@ -9,7 +18,7 @@ const ContactForm = () => {
     register,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm()
+  } = useForm({ resolver: yupResolver(schema) })
 
   function onSubmit(values) {
     return new Promise((resolve) => {
@@ -27,8 +36,8 @@ const ContactForm = () => {
         justify="center"
         align={{ base: 'center', md: 'flex-end' }}
         px={{ base: 12, md: 16 }}
-        py={{ lg: 12 }}
-        pb="12"
+        pt={{ lg: 16 }}
+        pb={{ base: 20, lg: 16 }}
         direction="column"
         w={{ base: 'full', lg: '380px' }}
         boxSizing={{ base: 'border-box', lg: 'content-box' }}
@@ -91,6 +100,7 @@ const ContactForm = () => {
           type="submit"
           display="flex"
           isLoading={isSubmitting}
+          mt="2"
         >
           Submit
         </Button>
