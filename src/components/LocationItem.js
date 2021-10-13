@@ -1,9 +1,17 @@
 import { useState } from 'react'
 
-import { Box, Flex, Heading, Icon, Stack } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Icon,
+  Stack,
+  useBreakpointValue,
+} from '@chakra-ui/react'
 import { MDXRemote } from 'next-mdx-remote'
 import { HiLocationMarker } from 'react-icons/hi'
-import ReactMapGL, { Marker } from 'react-map-gl'
+import ReactMapGL, { Marker, FlyToInterpolator } from 'react-map-gl'
 
 const LocationItem = ({
   title,
@@ -16,10 +24,23 @@ const LocationItem = ({
   const [viewport, setViewport] = useState({
     latitude: mapLocation.latitude,
     longitude: mapLocation.longitude,
-    width: '100%',
+    width: '1024px',
     height: '100%',
     zoom: 13,
   })
+
+  const offset = useBreakpointValue({ base: 0.03, md: 0.015, lg: 0.03 })
+
+  const centerToLocation = (lat, long) => {
+    setViewport({
+      ...viewport,
+      latitude: lat,
+      longitude: long + offset,
+      zoom: 13,
+      transitionInterpolator: new FlyToInterpolator({ speed: 1.2 }),
+      transitionDuration: 'auto',
+    })
+  }
 
   return (
     <Stack
@@ -79,12 +100,12 @@ const LocationItem = ({
           overflow="hidden"
           rounded={{ base: 'unset', md: '2xl' }}
           w={{ base: 'full', lg: '350px' }}
-          h={{ base: '326px', lg: 'auto' }}
+          h="339px"
         >
           <ReactMapGL
             mapStyle="mapbox://styles/mapbox/streets-v9"
-            mapboxApiAccessToken="pk.eyJ1IjoiYW5oZWsiLCJhIjoiY2t1bXh0cTJrMWhzZTMzbzZvZjYyZzNrbCJ9.Nz4xU3OIrWtlK0wkFE8aHA"
-            onViewportChange={(viewport) => setViewport(viewport)}
+            mapboxApiAccessToken="pk.eyJ1IjoiYW5oZWsiLCJhIjoiY2t1bXlrcTltMG9pNjMwdGg2cTFmZzhleSJ9.oqlfTue82ExvrT1lVYgniw"
+            onViewportChange={(viewport) => setViewport({ ...viewport })}
             {...viewport}
           >
             <Marker
@@ -98,6 +119,22 @@ const LocationItem = ({
               />
             </Marker>
           </ReactMapGL>
+          <Button
+            onClick={() => {
+              centerToLocation(mapLocation.latitude, mapLocation.longitude)
+            }}
+            fontSize="12px"
+            px="4"
+            py="2"
+            position="absolute"
+            bottom="10px"
+            right="10px"
+            rounded="2xl"
+            variant="light"
+            zIndex="overlay"
+          >
+            Locate
+          </Button>
         </Box>
       )}
     </Stack>

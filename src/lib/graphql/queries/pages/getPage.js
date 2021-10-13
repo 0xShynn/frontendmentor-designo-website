@@ -32,6 +32,14 @@ const GET_PAGE = gql`
               height
               altText
             }
+            photo: picture {
+              id
+              height
+              width
+              url
+              altText
+              imageSize
+            }
             content
           }
           ... on Hero {
