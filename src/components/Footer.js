@@ -84,7 +84,7 @@ const Footer = ({ data }) => {
             align="center"
             spacing="8"
             display={{ base: 'none', md: 'flex' }}
-            role="navigation"
+            as="nav"
             aria-label="footer navigation"
           >
             <NavLinks
