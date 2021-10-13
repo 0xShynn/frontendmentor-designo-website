@@ -58,24 +58,17 @@ const LocationItem = ({
             {title}
           </Heading>
         )}
+
         {(address || contact) && (
           <Stack
             direction={{ base: 'column', md: 'row' }}
             spacing={{ base: 8, md: 28, lg: 20, xl: 28 }}
             as="address"
             fontStyle="normal"
+            color="primary.black"
           >
-            {address && (
-              <Box color="primary.black">
-                <MDXRemote {...address} />
-              </Box>
-            )}
-
-            {contact && (
-              <Box color="primary.black">
-                <MDXRemote {...contact} />
-              </Box>
-            )}
+            {address && <MDXRemote {...address} />}
+            {contact && <MDXRemote {...contact} />}
           </Stack>
         )}
       </Flex>
@@ -90,7 +83,7 @@ const LocationItem = ({
         >
           <ReactMapGL
             mapStyle="mapbox://styles/mapbox/streets-v9"
-            mapboxApiAccessToken="pk.eyJ1IjoiYW5oZWsiLCJhIjoiY2t1bXlrcTltMG9pNjMwdGg2cTFmZzhleSJ9.oqlfTue82ExvrT1lVYgniw"
+            mapboxApiAccessToken="pk.eyJ1IjoiYW5oZWsiLCJhIjoiY2t1bXh0cTJrMWhzZTMzbzZvZjYyZzNrbCJ9.Nz4xU3OIrWtlK0wkFE8aHA"
             onViewportChange={(viewport) => setViewport(viewport)}
             {...viewport}
           >

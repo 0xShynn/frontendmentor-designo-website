@@ -1,4 +1,3 @@
-import { Flex } from '@chakra-ui/layout'
 import { NextSeo } from 'next-seo'
 
 import FeaturesContainer from '../components/FeaturesContainer'

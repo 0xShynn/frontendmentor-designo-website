@@ -121,12 +121,12 @@ const Footer = ({ data }) => {
             mb={{ base: 10, md: 0 }}
             as="address"
             fontStyle="normal"
+            color="white"
+            opacity="0.5"
           >
             {companyInfos &&
               companyInfos.map((block, i) => (
-                <Box key={i} color="white" opacity="0.5">
-                  <MDXRemote {...block.informationMdx} />
-                </Box>
+                <MDXRemote {...block.informationMdx} key={i} />
               ))}
           </Stack>
 
