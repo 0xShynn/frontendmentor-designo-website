@@ -17,6 +17,7 @@ const GET_PROJECTS_PAGE = gql`
           altText
           height
         }
+        slug
       }
       description
       projectsTiles {
