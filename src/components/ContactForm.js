@@ -8,7 +8,7 @@ import CustomInput from './utils/CustomInput'
 const schema = yup.object().shape({
   name: yup.string().required('A name is required'),
   email: yup.string().email().required('An email is required'),
-  phone: yup.string().required('A phone number is required'),
+  phone: yup.number().required('A phone number is required'),
   message: yup.string().required('A message is required'),
 })
 
@@ -61,6 +61,7 @@ const ContactForm = () => {
           placeholder="Email Address"
           errorName={errors?.email}
           errorMessage={errors?.email?.message}
+          type="email"
           register={{
             ...register('email', {
               required: 'This is required',
@@ -74,6 +75,7 @@ const ContactForm = () => {
           placeholder="Phone"
           errorName={errors?.phone}
           errorMessage={errors?.phone?.message}
+          type="number"
           register={{
             ...register('phone', {
               required: 'This is required',

@@ -85,6 +85,7 @@ const Footer = ({ data }) => {
             spacing="8"
             display={{ base: 'none', md: 'flex' }}
             role="navigation"
+            aria-label="footer navigation"
           >
             <NavLinks
               data={navLinks}
@@ -118,6 +119,8 @@ const Footer = ({ data }) => {
             direction={{ base: 'column', md: 'row' }}
             textAlign={{ base: 'center', md: 'left' }}
             mb={{ base: 10, md: 0 }}
+            as="address"
+            fontStyle="normal"
           >
             {companyInfos &&
               companyInfos.map((block, i) => (

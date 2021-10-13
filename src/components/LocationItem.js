@@ -62,6 +62,8 @@ const LocationItem = ({
           <Stack
             direction={{ base: 'column', md: 'row' }}
             spacing={{ base: 8, md: 28, lg: 20, xl: 28 }}
+            as="address"
+            fontStyle="normal"
           >
             {address && (
               <Box color="primary.black">
