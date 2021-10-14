@@ -84,7 +84,8 @@ const Footer = ({ data }) => {
             align="center"
             spacing="8"
             display={{ base: 'none', md: 'flex' }}
-            role="navigation"
+            as="nav"
+            aria-label="footer navigation"
           >
             <NavLinks
               data={navLinks}
@@ -118,12 +119,14 @@ const Footer = ({ data }) => {
             direction={{ base: 'column', md: 'row' }}
             textAlign={{ base: 'center', md: 'left' }}
             mb={{ base: 10, md: 0 }}
+            as="address"
+            fontStyle="normal"
+            color="white"
+            opacity="0.5"
           >
             {companyInfos &&
               companyInfos.map((block, i) => (
-                <Box key={i} color="white" opacity="0.5">
-                  <MDXRemote {...block.informationMdx} />
-                </Box>
+                <MDXRemote {...block.informationMdx} key={i} />
               ))}
           </Stack>
 

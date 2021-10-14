@@ -55,6 +55,7 @@ const ProjectsPage = ({ data, page }) => {
                 title={project.title}
                 image={project.image}
                 description={project.description}
+                slug={project.slug}
                 key={i}
               />
             ))}
