@@ -1,5 +1,8 @@
 import { Box, Flex, Heading, LinkBox, LinkOverlay } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
 import NextLink from 'next/link'
+
+const MotionLinkBox = motion(LinkBox)
 
 const Tile = ({ title, button, bgImage }) => {
   const mobileBgImage =
@@ -10,7 +13,7 @@ const Tile = ({ title, button, bgImage }) => {
     bgImage?.find((bgImage) => bgImage.imageSize === 'desktop') ?? null
 
   return (
-    <LinkBox
+    <MotionLinkBox
       h="full"
       pos="relative"
       sx={{
@@ -20,6 +23,9 @@ const Tile = ({ title, button, bgImage }) => {
           opacity: '0.7',
         },
       }}
+      initial={{ y: 0, scale: 1 }}
+      whileTap={{ y: 3 }}
+      whileHover={{ scale: 1.02 }}
     >
       <Box zIndex="overlay" pos="relative" h="full">
         <Flex
@@ -53,6 +59,7 @@ const Tile = ({ title, button, bgImage }) => {
           </NextLink>
         </Flex>
       </Box>
+
       <Box
         className="bg"
         transition="0.2s"
@@ -72,7 +79,7 @@ const Tile = ({ title, button, bgImage }) => {
         bgSize="cover"
         top="0"
       />
-    </LinkBox>
+    </MotionLinkBox>
   )
 }
 

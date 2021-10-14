@@ -1,10 +1,19 @@
 import { Flex, Heading } from '@chakra-ui/layout'
 import { Box, Link, Text } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
 import NextImage from 'next/image'
 
 const Project = ({ title, image, description, slug }) => {
+  const MotionLink = motion(Link)
+
   return (
-    <Link href={`#${slug}`} rounded="2xl">
+    <MotionLink
+      href={`#${slug}`}
+      rounded="2xl"
+      initial={{ y: 0 }}
+      whileTap={{ y: 3 }}
+    >
+      <Link></Link>
       <Flex
         rounded="2xl"
         overflow="hidden"
@@ -20,6 +29,7 @@ const Project = ({ title, image, description, slug }) => {
             layout="responsive"
             width={image?.width ?? 0}
             height={image?.height ?? 0}
+            alt={image.altText}
           />
         </Box>
         <Flex
@@ -53,7 +63,7 @@ const Project = ({ title, image, description, slug }) => {
           </Box>
         </Flex>
       </Flex>
-    </Link>
+    </MotionLink>
   )
 }
 

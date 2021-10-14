@@ -1,5 +1,6 @@
 import { Button, Flex } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
@@ -29,6 +30,8 @@ const ContactForm = () => {
       }, 1000)
     })
   }
+
+  const MotionButton = motion(Button)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -97,7 +100,7 @@ const ContactForm = () => {
           }}
         />
 
-        <Button
+        <MotionButton
           px="12"
           py="7"
           variant="dark"
@@ -105,9 +108,12 @@ const ContactForm = () => {
           display="flex"
           isLoading={isSubmitting}
           mt="2"
+          initial={{ y: 0 }}
+          whileTap={{ y: 3 }}
+          _hover={{ bg: 'white' }}
         >
           Submit
-        </Button>
+        </MotionButton>
       </Flex>
     </form>
   )
