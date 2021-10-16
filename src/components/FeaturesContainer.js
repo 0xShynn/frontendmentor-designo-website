@@ -13,7 +13,12 @@ const FeaturesContainer = ({ data }) => {
   return useMemo(() => {
     const FramerFeaturesContainer = {
       hidden: { opacity: 0 },
-      visible: { opacity: inView ? 1 : 0 },
+      visible: {
+        opacity: inView ? 1 : 0,
+        transition: {
+          staggerChildren: 1,
+        },
+      },
     }
 
     return (

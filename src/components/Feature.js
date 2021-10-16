@@ -18,7 +18,7 @@ const Feature = ({ title, description, image, index }) => {
       y: 0,
       opacity: 1,
       transition: {
-        staggerChildren: 1,
+        staggerChildren: 0.3,
       },
     },
   }
@@ -29,6 +29,9 @@ const Feature = ({ title, description, image, index }) => {
     },
     visible: {
       opacity: 1,
+      transition: {
+        when: 'afterChildren',
+      },
     },
   }
 
