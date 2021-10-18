@@ -13,7 +13,6 @@ const Project = ({ title, image, description, slug }) => {
       initial={{ y: 0 }}
       whileTap={{ y: 3 }}
     >
-      <Link></Link>
       <Flex
         rounded="2xl"
         overflow="hidden"

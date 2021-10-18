@@ -9,6 +9,7 @@ const GET_PROJECTS_PAGE = gql`
       title
       slug
       projects {
+        id
         title
         description
         image {
@@ -21,6 +22,7 @@ const GET_PROJECTS_PAGE = gql`
       }
       description
       projectsTiles {
+        id
         title
         imageBackground {
           url

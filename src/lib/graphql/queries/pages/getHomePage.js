@@ -10,6 +10,7 @@ const GET_HOME_PAGE = gql`
       content {
         blocks {
           ... on Hero {
+            id
             title
             image {
               altText
@@ -24,6 +25,7 @@ const GET_HOME_PAGE = gql`
             }
           }
           ... on Feature {
+            id
             title
             description
             illustration {

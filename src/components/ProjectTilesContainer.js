@@ -20,7 +20,7 @@ const ProjectTilesContainer = ({ data }) => {
         {data.map((tile, i) => {
           return (
             <GridItem
-              key={i}
+              key={tile.id}
               colSpan={{ base: '2', lg: '1' }}
               rowSpan={
                 i === 0 && tilesCount === 3 ? { base: '1', lg: '2' } : '1'

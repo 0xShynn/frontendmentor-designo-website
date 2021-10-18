@@ -23,7 +23,7 @@ const Tile = ({ title, button, bgImage }) => {
           opacity: '0.7',
         },
       }}
-      initial={{ y: 0, scale: 1 }}
+      initial={{ y: 0 }}
       whileTap={{ y: 3 }}
       whileHover={{ scale: 1.02 }}
     >

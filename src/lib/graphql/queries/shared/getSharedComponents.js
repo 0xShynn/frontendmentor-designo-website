@@ -13,6 +13,7 @@ const GET_SHARED_COMPONENTS = gql`
         }
       }
       companyInfos {
+        id
         title
         information
       }
@@ -23,6 +24,7 @@ const GET_SHARED_COMPONENTS = gql`
         altText
       }
       socialMedias {
+        id
         title
         socialLink
         url
@@ -40,8 +42,10 @@ const GET_SHARED_COMPONENTS = gql`
     header(stage: PUBLISHED, where: { slug: "primary" }) {
       id
       navigation {
+        id
         slug
         pages {
+          id
           title
           slug
         }

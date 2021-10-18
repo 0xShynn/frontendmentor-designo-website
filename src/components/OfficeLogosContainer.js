@@ -12,7 +12,7 @@ const OfficeLogosContainer = ({ data, pt }) => {
     >
       {data.map((logo, i) => (
         <CityLogo
-          key={i}
+          key={logo.id}
           title={logo.country}
           image={logo.image}
           link={logo.button}

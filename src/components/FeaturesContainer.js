@@ -8,7 +8,10 @@ import Feature from './Feature'
 
 const FeaturesContainer = ({ data }) => {
   const MotionStack = motion(Stack)
-  const { ref, inView } = useInView({ threshold: 0.75, triggerOnce: true })
+  const { ref, inView } = useInView({
+    threshold: 0.25,
+    triggerOnce: true,
+  })
 
   return useMemo(() => {
     const FramerFeaturesContainer = {
@@ -41,7 +44,7 @@ const FeaturesContainer = ({ data }) => {
             description={feature.description}
             image={feature.illustration}
             index={i}
-            key={i}
+            key={feature.id}
           />
         ))}
       </MotionStack>
