@@ -26,6 +26,7 @@ const ProjectsPage = ({ data, page }) => {
         justify="center"
         maxW="1110px"
         mx="auto"
+        role="main"
       >
         {(title || description) && (
           <Banner noPadding>
@@ -49,6 +50,7 @@ const ProjectsPage = ({ data, page }) => {
             px={{ base: 6, md: 8, xl: 0 }}
             spacing="6"
             py="28"
+            role="region"
           >
             {projects.map((project, i) => (
               <Project
