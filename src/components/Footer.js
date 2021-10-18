@@ -125,15 +125,15 @@ const Footer = ({ data }) => {
             opacity="0.5"
           >
             {companyInfos &&
-              companyInfos.map((block, i) => (
-                <MDXRemote {...block.informationMdx} key={i} />
+              companyInfos.map((block) => (
+                <MDXRemote {...block.informationMdx} key={block.id} />
               ))}
           </Stack>
 
           <HStack spacing="4">
-            {socialLinks.map((item, i) => (
+            {socialLinks.map((item) => (
               <Link
-                key={i}
+                key={item.id}
                 href={item.url}
                 color="primary.peach"
                 display="inline-block"

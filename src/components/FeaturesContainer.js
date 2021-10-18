@@ -41,7 +41,7 @@ const FeaturesContainer = ({ data }) => {
             description={feature.description}
             image={feature.illustration}
             index={i}
-            key={i}
+            key={feature.id}
           />
         ))}
       </MotionStack>

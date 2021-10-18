@@ -48,7 +48,7 @@ const Locations = ({ data, offices }) => {
               mapLocation={office.mapLocation}
               slug={office.slug}
               index={i}
-              key={i}
+              key={office.id}
             />
           ))}
         </Stack>

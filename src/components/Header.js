@@ -119,8 +119,8 @@ const Header = ({ data }) => {
               align="flex-start"
               variants={FramerMenu}
             >
-              {navLinks.map((link, i) => (
-                <MotionBox key={i} variants={FramerItem}>
+              {navLinks.map((link) => (
+                <MotionBox key={link.id} variants={FramerItem}>
                   <CustomLink
                     href={`/${link.slug}`}
                     color="white"

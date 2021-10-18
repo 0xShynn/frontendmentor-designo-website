@@ -52,13 +52,13 @@ const ProjectsPage = ({ data, page }) => {
             py="28"
             role="region"
           >
-            {projects.map((project, i) => (
+            {projects.map((project) => (
               <Project
                 title={project.title}
                 image={project.image}
                 description={project.description}
                 slug={project.slug}
-                key={i}
+                key={project.id}
               />
             ))}
           </SimpleGrid>
