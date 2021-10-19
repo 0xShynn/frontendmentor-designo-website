@@ -4,6 +4,7 @@ import Icon from '@chakra-ui/icon'
 import { Box, Divider, Flex, Link, Stack, HStack } from '@chakra-ui/layout'
 import { Heading, Text } from '@chakra-ui/react'
 import { MDXRemote } from 'next-mdx-remote'
+import NextLink from 'next/link'
 
 import PageSlugContext from '../contexts/PageSlugContext'
 import renderSocialIcons from '../utils/renderSocialIcons'
@@ -132,16 +133,18 @@ const Footer = ({ data }) => {
 
           <HStack spacing="4">
             {socialLinks.map((item) => (
-              <Link
-                key={item.id}
-                href={item.url}
-                color="primary.peach"
-                display="inline-block"
-                _hover={{ color: 'secondary.lightpeach' }}
-                aria-label={`${item.title} logo`}
-              >
-                <Icon boxSize="24px">{renderSocialIcons(item.socialLink)}</Icon>
-              </Link>
+              <NextLink href={item.url} key={item.id}>
+                <Link
+                  color="primary.peach"
+                  display="inline-block"
+                  _hover={{ color: 'secondary.lightpeach' }}
+                  aria-label={`${item.title} logo`}
+                >
+                  <Icon boxSize="24px">
+                    {renderSocialIcons(item.socialLink)}
+                  </Icon>
+                </Link>
+              </NextLink>
             ))}
           </HStack>
         </Flex>
