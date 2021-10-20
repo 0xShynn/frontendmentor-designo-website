@@ -9,6 +9,7 @@ import NextLink from 'next/link'
 import PageSlugContext from '../contexts/PageSlugContext'
 import renderSocialIcons from '../utils/renderSocialIcons'
 
+import AuthorBanner from './AuthorBanner'
 import Banner from './Banner'
 import NavLinks from './NavLinks'
 import CustomImage from './utils/CustomImage'
@@ -131,14 +132,14 @@ const Footer = ({ data }) => {
               ))}
           </Stack>
 
-          <HStack spacing="4">
+          <HStack spacing="4" id="social-links">
             {socialLinks.map((item) => (
-              <NextLink href={item.url} key={item.id}>
+              <NextLink href="#social-links" passHref key={item.id}>
                 <Link
                   color="primary.peach"
                   display="inline-block"
                   _hover={{ color: 'secondary.lightpeach' }}
-                  aria-label={`${item.title} logo`}
+                  aria-label={item.title}
                 >
                   <Icon boxSize="24px">
                     {renderSocialIcons(item.socialLink)}
@@ -149,6 +150,7 @@ const Footer = ({ data }) => {
           </HStack>
         </Flex>
       </Flex>
+      <AuthorBanner />
     </Box>
   )
 }
